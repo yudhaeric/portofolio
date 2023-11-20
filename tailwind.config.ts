@@ -21,6 +21,9 @@ const config: Config = {
       "monaMedium": 'monasans-medium',
       "monaRegular": 'monasans-regular',
     },
+    screens: {
+      'mobile': '320px',
+    },
   },
   plugins: [],
 }
