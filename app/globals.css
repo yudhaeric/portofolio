@@ -2,6 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@font-face {
+  font-family: 'anton';
+  src: url('/fonts/anton-regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'jomhuria';
+  src: url('/fonts/jomhuria-regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'monasans-light';
+  src: url('/fonts/monasans-light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'monasans-medium';
+  src: url('/fonts/monasans-medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'monasans-regular';
+  src: url('/fonts/monasans-regular.ttf') format('truetype');
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
