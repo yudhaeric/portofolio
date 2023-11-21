@@ -22,8 +22,12 @@ const config: Config = {
       "monaRegular": 'monasans-regular',
     },
     screens: {
-      'mobile': '320px',
+      'mobile': '360px',
+      'desktop': '1280px',
     },
+    animation: {
+      'spin-slow': 'spin 4s linear infinite',
+    }
   },
   plugins: [],
 }
