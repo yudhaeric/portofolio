@@ -82,15 +82,23 @@ export default function Home() {
                   height={127}
                 />
               </div>
-              <p className='text-[12px] mt-5 font-monaRegular desktop:text-[18px] desktop:w-[90%]'>
-                Hi there 👋 my full name is <span className='text-[#18A3DF] font-monaMedium'>Yudha Eric Pamungkas, </span>
-                with over one years, I&apos;ve evolved into a dedicated and 
-                <span className='font-monaMedium'> passionate web developer</span>. My commitment to 
-                staying up-to-date with the <span className='font-monaMedium'> latest web trends</span> and 
-                technologies, ensures that the websites I create 
-                are not only visually appealing but also 
-                <span className='font-monaMedium'> highly functional </span> and <span className='font-monaMedium'>responsive.</span>
-              </p>
+              <div className='text-[12px] mt-5 font-monaRegular desktop:text-[18px] desktop:w-[90%]'>
+                <p>
+                  Hi there 👋, I&apos;m <span className='text-[#18A3DF] font-monaMedium'>Yudha! </span>
+                </p>
+                <p>
+                  A <span className='font-monaMedium'>detail-oriented</span> and 
+                  <span className='font-monaMedium'> creative Front-End Developer</span> with two years of experience, 
+                  specializing in <span className='font-monaMedium'>building responsive </span> and
+                  <span className='font-monaMedium'> dynamic web applications </span> using
+                  <span className='font-monaMedium'> modern frameworks. </span> Passionate about
+                  <span className='font-monaMedium'> web standards </span> and staying up-to-date with the
+                  <span className='font-monaMedium'> latest trends in technology, </span>
+                  I ensure the websites I create are not only <span className='font-monaMedium'> visually appealing </span>
+                  but also <span className='font-monaMedium'> highly functional </span> and
+                  <span className='font-monaMedium'> responsive</span>.
+                </p>
+              </div>
               <div className='flex gap-52 desktop:gap-[520px]'>
                 <div className='relative flex items-center mt-[-5px] ml-[-10px] desktop:mt-3'>
                   <p className='text-[8px] border border-[#1E1E1E] rounded-full px-[10px] py-[3px] desktop:text-[10px]'>6 Projects Done</p>
