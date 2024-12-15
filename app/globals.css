@@ -31,3 +31,21 @@ body {
   background-color: #FFF5EA;
   overflow-x: hidden;
 }
+
+.appear-timeline-thirty {
+  animation-timeline: view();
+  animation-range: entry 0% cover 30%;
+}
+
+.appear-timeline-sixty {
+  animation-timeline: view();
+  animation-range: entry 0% cover 60%;
+}
+
+.animation-delay-two {
+  animation-delay: 1000ms;
+}
+
+.animation-delay-three {
+  animation-delay: 300ms;
+}
