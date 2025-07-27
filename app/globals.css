@@ -1,18 +1,36 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* Safelist TailwindCSS */
+/* @source inline("fill-{whiteCream,yellowCorn,darkTangerine,golden}"); */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@theme {
+  /* Mobile & Desktop Breakpoint 📱💻 */
+  --breakpoint-mobile-sm: 22.5rem; /* 360px */
+  --breakpoint-mobile-special: 23.438rem; /* 375px */
+  --breakpoint-mobile-md: 24.063rem; /* 385px */
+  --breakpoint-mobile-lg: 25.625rem; /* 410px */
+  --breakpoint-mobile-xl: 26.25rem; /* 420px */
+  --breakpoint-dsm: 85.375rem; /* 1366px */
+  --breakpoint-dmd: 90rem; /* 1440px */
+  --breakpoint-dlg: 109.375rem; /* 1750px */
+
+  /* Colors 🎨 */
+  --color-seashell: #FAF7F0;
+  --color-sonicSilver: #787777;
+  --color-davysGrey: #535455;
+  --color-oliveBlack: #3A3B3C;
+  --color-chineseBlack: #131415;
+  --color-raisinBlack: #1F2021;
+  --color-charlestonGreen: #262728;
+  --color-crayolaGreen: #10B981;
+
+  /* Keyframes Animation 🎬 */
+  /* --animation-slide-in: slide-in 0.5s ease-out forwards; */
+
+  /* Background Image 🖼️ */
+  /* --background-image-name: url('/public/images/folder/name.png'); */
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  @apply w-full h-full bg-chineseBlack;
 }
