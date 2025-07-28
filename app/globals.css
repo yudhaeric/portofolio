@@ -16,21 +16,56 @@
 
   /* Colors 🎨 */
   --color-seashell: #FAF7F0;
+  --color-whiteCream: #FAF7F0;
+  --color-platinum: #E5E5E5;
   --color-sonicSilver: #787777;
   --color-davysGrey: #535455;
   --color-oliveBlack: #3A3B3C;
   --color-chineseBlack: #131415;
   --color-raisinBlack: #1F2021;
   --color-charlestonGreen: #262728;
+  --color-aeroBlue: #D1FAE5;
+  --color-eucalyptusGreen: #34D399;
+  --color-mountainGreen: #24C38E;
   --color-crayolaGreen: #10B981;
 
   /* Keyframes Animation 🎬 */
   /* --animation-slide-in: slide-in 0.5s ease-out forwards; */
 
   /* Background Image 🖼️ */
-  /* --background-image-name: url('/public/images/folder/name.png'); */
+  --background-image-dot-pattern: url('/public/images/dot-pattern.svg');
 }
 
 body {
   @apply w-full h-full bg-chineseBlack;
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+@keyframes float3d {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  }
+  30% {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); /* Stay normal longer */
+  }
+  40% {
+    transform: rotateX(20deg) rotateY(-5deg) rotateZ(15deg); /* Quick transform */
+  }
+  70% {
+    transform: rotateX(20deg) rotateY(-5deg) rotateZ(15deg); /* Stay 3D longer */
+  }
+  80% {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); /* Quick back */
+  }
+  100% {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); /* Stay normal */
+  }
+}
+
+.animate-float3d {
+  animation: float3d 6s ease-in-out infinite;
 }
