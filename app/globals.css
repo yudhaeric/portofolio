@@ -69,3 +69,15 @@ h1 {
 .animate-float3d {
   animation: float3d 6s ease-in-out infinite;
 }
+
+.gradient-border {
+  border-style: dashed;
+  border-width: 1px 0;
+  border-image: linear-gradient(to right, #3A3B3C 0%, #131415 100%);
+  border-image-slice: 1;
+}
+
+.scale-icon:hover {
+  transform: scale(1.2);
+  transition: all 0.3s ease-in-out;
+}
