@@ -160,6 +160,26 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <section id='get-in-touch'>
+        <div className="flex items-start justify-start gap-[1px] w-full mt-[60px] lg:items-start lg:justify-start lg:w-[1050px] lg:mx-auto lg:h-[500px]">
+          <div id='outer-left-grid'>
+            <div className='hidden lg:flex flex-col items-center justify-center w-[40px] h-[40px] border-b-1 border-oliveBlack/70 lg:border-oliveBlack/40 border-dashed'></div>
+          </div>
+          <div className='flex flex-col items-start justify-start gap-[1px] w-full h-full'>
+            <div className='flex flex-col items-center justify-center w-full h-[40px] border-l-1 border-b-1 border-oliveBlack/70 lg:border-oliveBlack/40 border-dashed'></div>
+            <div className='flex flex-col items-start justify-start w-full h-[190px] border-l-1 border-oliveBlack/70 lg:border-oliveBlack/40 border-dashed pt-5 pl-6'>
+              <h1 className='font-semibold text-white text-[28px]'>Get In Touch</h1>
+              <p className='text-sm text-white leading-5'>
+                Do you have a job opportunity or idea you&apos;d like to discuss?<br/>Feel free to reach me at&nbsp;
+                <a href="mailto:yudhaericpamungkas@gmail.com" className='font-bold'>yudhaericpamungkas@gmail.com</a><br/>You can also find me on&nbsp;
+                <a href="https://www.linkedin.com/in/yudha-eric-pamungkas/" target="_blank" rel="noopener noreferrer" className='font-bold'>Linkedin</a>&nbsp;and&nbsp;
+                <a href="https://github.com/yudhaeric" target="_blank" rel="noopener noreferrer" className='font-bold'>Github</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
