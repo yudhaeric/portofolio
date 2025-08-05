@@ -150,7 +150,7 @@ export default function Home() {
                         <p>{project.tech}</p>
                       </div>
                       <div className='flex items-end justify-end w-full h-[36px] mt-5'>
-                        <Button variant='basic'>Open Website</Button>
+                        <Button type='link' href={project.url} variant='basic'>Open Website</Button>
                       </div>
                     </div>
                   </div>

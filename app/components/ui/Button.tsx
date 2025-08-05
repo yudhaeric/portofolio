@@ -3,17 +3,33 @@
 
 import React from 'react';
 
-interface ButtonProps {
+type ButtonAsButton = {
   children: React.ReactNode;
+  type?: 'button';
   variant?: 'highlight' | 'basic';
   onClick?: () => void;
   className?: string;
-}
+  href?: never;
+};
+
+type ButtonAsLink = {
+  children: React.ReactNode;
+  type: 'link';
+  variant?: 'highlight' | 'basic';
+  href: string;
+  onClick?: never;
+  className?: string;
+};
+
+// Menggabungkan kedua type
+type ButtonProps = ButtonAsButton | ButtonAsLink;
 
 export default function Button({ 
   children,
+  type = 'button',
   variant = 'basic',
   onClick,
+  href,
   className = '',
 }: ButtonProps) {
   
@@ -27,14 +43,32 @@ export default function Button({
     basic: "bg-raisinBlack"
   };
 
-  return (
-    <button
-      className={`${baseWrapper} ${borderGradient} ${className}`}
-      onClick={onClick}
-    >
-      <span className={`${baseButton} ${variants[variant]} ${className}`}>
-        {children}
-      </span>
-    </button>
-  );
+  const commonClassNames = `${baseWrapper} ${borderGradient} ${className}`;
+  const innerClassNames = `${baseButton} ${variants[variant]} ${className}`;
+
+  if (type === 'link') {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={commonClassNames}
+      >
+        <span className={innerClassNames}>
+          {children}
+        </span>
+      </a>
+    );
+  } else {
+    return (
+      <button
+        className={commonClassNames}
+        onClick={onClick}
+      >
+        <span className={innerClassNames}>
+          {children}
+        </span>
+      </button>
+    );
+  }
 }
