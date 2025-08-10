@@ -129,7 +129,7 @@ export default function Home() {
       </section>
 
       <section id="featured-projects">
-        <div className="w-[90%] mx-auto mt-[200px] lg:w-[1050px]">
+        <div className="w-[90%] mx-auto mt-[100px] lg:w-[1050px]">
           <div className='flex flex-col items-start justify-start gap-5 w-[90%] mx-auto lg:gap-[43px]'>
             <div className='flex flex-col items-start justify-start'>
               <h1 className="font-semibold text-white text-[42px]">Featured Projects</h1>
@@ -162,7 +162,7 @@ export default function Home() {
       </section>
 
       <section id='get-in-touch'>
-        <div className="flex items-start justify-start gap-[1px] w-full mt-[60px] lg:items-start lg:justify-start lg:w-[1050px] lg:mx-auto lg:h-[500px]">
+        <div className="flex items-start justify-start gap-[1px] w-full mt-[60px] lg:items-start lg:justify-start lg:w-[1050px] lg:mx-auto lg:h-[300px]">
           <div id='outer-left-grid'>
             <div className='hidden lg:flex flex-col items-center justify-center w-[40px] h-[40px] border-b-1 border-oliveBlack/70 lg:border-oliveBlack/40 border-dashed'></div>
           </div>
