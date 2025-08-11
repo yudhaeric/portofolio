@@ -1,7 +1,7 @@
 // app/components/ui/Button.tsx
 'use client';
-
-import React from 'react';
+import { useRef, useEffect } from 'react';
+import { useSectionStore } from '../../store/sectionStore';
 
 type ButtonAsButton = {
   children: React.ReactNode;
@@ -32,6 +32,15 @@ export default function Button({
   href,
   className = '',
 }: ButtonProps) {
+
+  const projectsRef = useRef<HTMLElement | null>(null);
+  const setSectionRef = useSectionStore((state) => state.setSectionRef);
+  
+  useEffect(() => {
+    if (projectsRef.current) {
+      setSectionRef("projects", projectsRef.current);
+    }
+  }, [setSectionRef]);
   
   // styles
   const baseWrapper = "flex items-center justify-center w-[140px] h-[48px] text-seashell text-sm rounded-[5px] transition-all duration-300 cursor-pointer p-[1px] lg:w-[121px] lg:h-[40px]";

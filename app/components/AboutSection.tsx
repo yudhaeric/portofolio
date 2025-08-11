@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 import { useEffect, useRef } from 'react';
 import { useSectionStore } from '../store/sectionStore';
@@ -17,6 +18,15 @@ export default function AboutSection ({ socialMedias }: AboutSectionProps) {
       setSectionRef("about", aboutRef.current);
     }
   }, [setSectionRef]);
+
+  const sectionRefs = useSectionStore((state) => state.sectionRefs);
+
+  const handleClickProjectsSection = (section: string) => {
+    const ref = sectionRefs[section];
+    if (ref) {
+      ref.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <section ref={aboutRef} id="about">
@@ -62,7 +72,12 @@ export default function AboutSection ({ socialMedias }: AboutSectionProps) {
               <div className="flex flex-col items-start justify-start gap-8 w-[90%] h-[150px] border-1 border-t-0 border-b-0 border-oliveBlack/70 lg:border-oliveBlack/40 border-dashed pt-5 pb-5 px-3 lg:gap-[30px] lg:w-full lg:h-full lg:border-0 lg:border-b-1 lg:px-5">
                 <div className='flex items-center justify-start gap-4 w-full lg:w-auto lg:gap-3 lg:justify-center mobile-md:gap-2'>
                   <Button type='link' href='mailto:yudhaericpamungkas@gmail.com' variant='highlight'>Let&apos;s Talk</Button>
-                  <Button type='link' href='#projects-gradient' variant='basic'>View Projects</Button>
+                  <Button
+                    onClick={() => handleClickProjectsSection('projects')} 
+                    variant='basic'
+                  >
+                    View Projects
+                  </Button>
                 </div>
                 <div className='flex items-center justify-center gap-[13px] mb-[6px] lg:gap-[10px]'>
                   {socialMedias.map((social) => {
