@@ -39,7 +39,7 @@ export default function Home() {
   return (
     <main>
       <section id="overview">
-        <div className="flex items-start justify-start w-full mt-[60px] lg:items-start lg:justify-start lg:w-[1050px] lg:mx-auto lg:h-[500px] lg:mt-[8%] dmd:mt-[7%]">
+        <div className="flex items-start justify-start w-full mt-[60px] lg:items-start lg:justify-start lg:w-[1050px] lg:mx-auto lg:h-[500px] lg:mt-[6%] dmd:mt-[7%]">
           <div id='outer-left-grid'>
             <div className='hidden lg:flex flex-col items-center justify-center w-[40px] h-[85.5px] border-t-1 border-b-1 border-oliveBlack/70 lg:border-oliveBlack/40 border-dashed lg:mt-[40px] dmd:h-[85px] 2xl:mt-[39px]'></div>
             <div className='hidden lg:flex flex-col items-center justify-center w-[40px] h-[200px] border-b-1 border-oliveBlack/70 lg:border-oliveBlack/40 border-dashed'></div>
@@ -60,17 +60,17 @@ export default function Home() {
                         <span className='absolute w-[8px] h-[8px] rounded-full bg-mountainGreen/40 animate-ping'></span>
                         <span className="relative w-[6px] h-[6px] rounded-full bg-crayolaGreen"></span>
                       </div>
-                      <p className="text-white text-xs lg:text-sm">Orchestrating experiences at <span className="font-medium">AITINDO</span></p>
+                      <p className="text-white text-sm">Orchestrating experiences at <span className="font-medium">AITINDO</span></p>
                     </div>
                   </div>
                 </div>
               </div>
               <div className="flex items-center justify-center w-full border-t-1 border-oliveBlack/70 border-dashed lg:flex-row lg:border-0">
                 <div className="flex flex-col items-start justify-start gap-1 w-[90%] h-auto border-1 border-t-0 border-b-0 border-oliveBlack/70 lg:border-oliveBlack/40 border-dashed pt-2 pb-5 px-3 lg:w-full lg:h-[200px] lg:border-0 lg:border-b-1 lg:px-5">
-                  <h1 className="font-semibold text-white text-[36px] lg:text-[52px]">
+                  <h1 className="font-semibold text-white text-[38px] lg:text-[52px]">
                     Hello! I&apos;m <span className="text-crayolaGreen">Yudha</span>
                   </h1>
-                  <p className="text-seashell text-sm leading-[18px] lg:text-base lg:leading-[20px]">
+                  <p className="text-seashell text-base leading-[20px]">
                     Yudha is a detail-oriented and creative Developer with 3 years of experience,
                     specializing in building responsive and dynamic web applications. He&apos;s passionate
                     about web standards, clean code, and delivering user experiences that drive real impact.
@@ -80,8 +80,8 @@ export default function Home() {
               <div className="flex items-center justify-center w-full border-t-1 border-oliveBlack/70 border-dashed lg:flex-row lg:border-0">
                 <div className="flex flex-col items-start justify-start gap-8 w-[90%] h-[150px] border-1 border-t-0 border-b-0 border-oliveBlack/70 lg:border-oliveBlack/40 border-dashed pt-5 pb-5 px-3 lg:gap-[30px] lg:w-full lg:h-full lg:border-0 lg:border-b-1 lg:px-5">
                   <div className='flex items-center justify-start gap-4 w-full lg:w-auto lg:gap-3 lg:justify-center mobile-md:gap-2'>
-                    <Button variant='highlight'>Let&apos;s Talk</Button>
-                    <Button variant='basic'>View Projects</Button>
+                    <Button type='link' href='mailto:yudhaericpamungkas@gmail.com' variant='highlight'>Let&apos;s Talk</Button>
+                    <Button type='link' href='#projects-gradient' variant='basic'>View Projects</Button>
                   </div>
                   <div className='flex items-center justify-center gap-[13px] mb-[6px] lg:gap-[10px]'>
                     {socialMedias.map((social) => {
@@ -129,52 +129,61 @@ export default function Home() {
       </section>
 
       <section id="featured-projects">
-        <div className="w-[90%] mx-auto mt-[100px] lg:w-[1050px]">
-          <div className='flex flex-col items-start justify-start gap-5 w-[90%] mx-auto lg:gap-[43px]'>
+        <div className="relative w-[90%] mx-auto mt-[70px] lg:w-[1050px] lg:mt-[100px]">
+          <div id='projects-gradient' className='absolute -top-14 -left-5 lg:-left-32 lg:-top-32'>
+            <p className="font-medium text-[90px] mobile-md:text-[100px] text-transparent bg-gradient-to-b from-[#A1A1A4]/15 lg:from-[#A1A1A4]/7 to-raisinBlack/1 to-80% bg-clip-text tracking-[-3%] lg:text-[200px]">
+              Projects
+            </p>
+          </div>
+          <div className='relative flex flex-col items-start justify-start gap-10 w-full mx-auto z-10 lg:gap-[43px] lg:w-[90%]'>
             <div className='flex flex-col items-start justify-start'>
-              <h1 className="font-semibold text-white text-[42px]">Featured Projects</h1>
-              <p className='font-semibold text-sonicSilver text-[10px]'>A glimpse into the projects I&apos;ve built and contributed to.</p>
+              <h1 className="font-semibold text-transparent text-[38px] bg-gradient-to-b from-white to-[#999999] bg-clip-text lg:text-[42px]">
+                Featured Projects
+              </h1>
+              <p className='font-semibold text-sonicSilver text-base'>
+                A glimpse into the projects I&apos;ve built and contributed to.
+              </p>
             </div>
             <div className='flex flex-col items-center justify-center gap-[30px]'>
               {projects.map((project) => {
                 return ( 
-                  <div key={project.id} className='flex flex-col items-center justify-center w-full gap-5 lg:flex-row'>
-                    <div className={`${project.id % 2 === 0 ? 'order-2' : 'order-1'} flex items-center justify-center w-[305px] h-[250px] bg-raisinBlack bg-line-shape bg-no-repeat bg-cover rounded-[10px]`}>
-                      <img src={project.image} alt={project.title} className='w-[285px] h-[210px]' />
+                  <div key={project.id} className='flex flex-col items-center justify-center gap-5 w-full lg:flex-row'>
+                    <div className={`${project.id % 2 === 0 ? 'order-1 lg:order-2' : 'order-2 lg:order-1'} flex items-center justify-center w-full bg-raisinBlack bg-line-shape bg-no-repeat bg-cover rounded-[10px] p-4 lg:w-[305px] lg:h-[320px] lg:p-0`}>
+                      <img src={project.image} alt={project.title} className='w-full lg:w-[285px] lg:h-[210px]' />
                     </div>
-                    <div className={`${project.id % 2 === 0 ? 'order-1' : 'order-2'} flex flex-col items-start justify-start w-[630px] h-[250px] text-white border-1 border-oliveBlack/70 border-dashed rounded-[10px] p-5`}>
-                      <h2 className='font-bold text-2xl mb-[5px]'>{project.title}</h2>
-                      <p className='text-[12px] mb-[30px]'>{project.desc}</p>
-                      <div className='flex flex-col gap-1 text-xs'>
-                        <p className='font-bold'>Tech Stack</p>
-                        <p>{project.tech}</p>
+                    <div className={`${project.id % 2 === 0 ? 'order-1' : 'order-2'} flex flex-col items-start justify-start w-full text-white border-1 border-oliveBlack/70 border-dashed rounded-[10px] p-5 lg:w-[630px] lg:h-[320px]`}>
+                      <h2 className='text-transparent font-bold text-3xl bg-gradient-to-b from-white to-[#999999] bg-clip-text mb-3 lg:mb-[10px]'>{project.title}</h2>
+                      <p className='text-seashell text-base leading-5 mb-[30px] lg:leading-6'>{project.desc}</p>
+                      <div className='flex flex-col gap-1 text-base leading-5 lg:leading-6'>
+                        <p className='font-bold text-seashell'>Tech Stack</p>
+                        <p className='text-seashell text-sm'>{project.tech}</p>
                       </div>
-                      <div className='flex items-end justify-end w-full h-[36px] mt-5'>
+                      <div className='flex items-end justify-end w-full h-[36px] mt-10 lg:mt-5'>
                         <Button type='link' href={project.url} variant='basic'>Open Website</Button>
                       </div>
                     </div>
                   </div>
                 )
-              })};
+              })}
             </div>
           </div>
         </div>
       </section>
 
       <section id='get-in-touch'>
-        <div className="flex items-start justify-start gap-[1px] w-full mt-[60px] lg:items-start lg:justify-start lg:w-[1050px] lg:mx-auto lg:h-[300px]">
+        <div className="flex items-start justify-start gap-[1px] w-[90%] mt-[20px] mx-auto mb-10 lg:items-start lg:justify-start lg:w-[1050px] lg:mx-auto lg:h-[300px] lg:mt-[60px] lg:mb-0">
           <div id='outer-left-grid'>
             <div className='hidden lg:flex flex-col items-center justify-center w-[40px] h-[40px] border-b-1 border-oliveBlack/70 lg:border-oliveBlack/40 border-dashed'></div>
           </div>
           <div className='flex flex-col items-start justify-start gap-[1px] w-full h-full'>
-            <div className='flex flex-col items-center justify-center w-full h-[40px] border-l-1 border-b-1 border-oliveBlack/70 lg:border-oliveBlack/40 border-dashed'></div>
-            <div className='flex flex-col items-start justify-start w-full h-[190px] border-l-1 border-oliveBlack/70 lg:border-oliveBlack/40 border-dashed pt-5 pl-6'>
-              <h1 className='font-semibold text-white text-[28px]'>Get In Touch</h1>
-              <p className='text-sm text-white leading-5'>
-                Do you have a job opportunity or idea you&apos;d like to discuss?<br/>Feel free to reach me at&nbsp;
-                <a href="mailto:yudhaericpamungkas@gmail.com" className='font-bold'>yudhaericpamungkas@gmail.com</a><br/>You can also find me on&nbsp;
-                <a href="https://www.linkedin.com/in/yudha-eric-pamungkas/" target="_blank" rel="noopener noreferrer" className='font-bold'>Linkedin</a>&nbsp;and&nbsp;
-                <a href="https://github.com/yudhaeric" target="_blank" rel="noopener noreferrer" className='font-bold'>Github</a>.
+            <div className='flex flex-col items-center justify-center w-full h-[40px] lg:border-l-1 lg:border-b-1 lg:border-oliveBlack/40 lg:border-dashed'></div>
+            <div className='flex flex-col items-start justify-start gap-3 w-full h-[190px] lg:border-l-1 lg:border-oliveBlack/40 lg:border-dashed lg:pt-5 lg:pl-6'>
+              <h1 className='font-semibold text-transparent text-[32px] bg-gradient-to-b from-white to-[#999999] bg-clip-text lg:text-[28px]'>Get In Touch</h1>
+              <p className='text-base text-seashell leading-6 lg:leading-7'>
+                <span className='lg:block'>Do you have a job opportunity or idea you&apos;d like to discuss?</span> Feel free to reach me at 
+                <a href="mailto:yudhaericpamungkas@gmail.com" className='font-semibold text-seashell'> yudhaericpamungkas@gmail.com</a><br/>You can also find me on&nbsp;
+                <a href="https://www.linkedin.com/in/yudha-eric-pamungkas/" target="_blank" rel="noopener noreferrer" className='font-semibold text-seashell'>Linkedin</a>&nbsp;and&nbsp;
+                <a href="https://github.com/yudhaeric" target="_blank" rel="noopener noreferrer" className='font-semibold text-seashell'>Github</a>.
               </p>
             </div>
           </div>
