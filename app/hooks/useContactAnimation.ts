@@ -18,7 +18,7 @@ export const useContactAnimation = (elementRef: RefObject<HTMLElement | null>) =
     });
 
     contactAnimation.from("#get-in-touch", {
-      y: 100,
+      y: 50,
       opacity: 0,
       duration: 0.5,
       ease: "power2.out"
@@ -37,7 +37,7 @@ export const useContactAnimation = (elementRef: RefObject<HTMLElement | null>) =
       el.classList.add("underline-animation");
 
       gsap.to(el, {
-        delay: 0.5,
+        delay: 1,
         scrollTrigger: {
           trigger: el,
           start,
