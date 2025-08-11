@@ -1,5 +1,6 @@
-/* eslint-disable @next/next/no-img-element */
-import Button from './components/ui/Button';
+import AboutSection from './components/AboutSection';
+import ProjectsSection from './components/ProjectsSection';
+import ContactSection from './components/ContactSection';
 
 export default function Home() {
   const socialMedias = [
@@ -38,157 +39,9 @@ export default function Home() {
 
   return (
     <main>
-      <section id="overview">
-        <div className="flex items-start justify-start w-full mt-[60px] lg:items-start lg:justify-start lg:w-[1050px] lg:mx-auto lg:h-[500px] lg:mt-[6%] dmd:mt-[7%]">
-          <div id='outer-left-grid'>
-            <div className='hidden lg:flex flex-col items-center justify-center w-[40px] h-[85.5px] border-t-1 border-b-1 border-oliveBlack/70 lg:border-oliveBlack/40 border-dashed lg:mt-[40px] dmd:h-[85px] 2xl:mt-[39px]'></div>
-            <div className='hidden lg:flex flex-col items-center justify-center w-[40px] h-[200px] border-b-1 border-oliveBlack/70 lg:border-oliveBlack/40 border-dashed'></div>
-            <div className='hidden lg:flex flex-col items-center justify-center w-[40px] h-[134.5px] border-b-1 border-oliveBlack/70 lg:border-oliveBlack/40 border-dashed dmd:h-[135px] 2xl:h-[137px]'></div>
-          </div>
-          <div className='flex flex-col items-center justify-center gap-[1px] w-full h-full lg:flex-row lg:justify-between'>
-            <div id='top-grid-mobile' className="w-[90%] h-[40px] border-l-1 border-r-1 border-oliveBlack/70 border-dashed lg:hidden"></div>
-            {/* Summary */}
-            <div className='flex flex-col items-center justify-center w-full lg:w-[60%] lg:border-l-1 lg:border-r-1 lg:border-oliveBlack/40 lg:border-dashed'>
-              <div className="flex items-center justify-center w-full">
-                <div className='w-full lg:w-full lg:h-[40px]'></div>
-              </div>
-              <div className="flex items-center justify-center w-full border-t-1 border-oliveBlack/70 border-dashed lg:flex-row lg:border-0">
-                <div className='w-[90%] border-1 border-t-0 border-b-0 border-oliveBlack/70 lg:border-oliveBlack/40 border-dashed lg:w-full lg:h-[85px] lg:border-0 lg:border-t-1 lg:border-b-1'>
-                  <div className="flex items-end justify-end w-full h-[80px] px-2 mobile-xl:w-[90%] sm:w-[60%] md:w-[50%] lg:w-[390px] lg:px-4">
-                    <div className="w-full h-[39px] flex items-center justify-start gap-[5px] bg-linear-to-r from-eucalyptusGreen/20 to-raisinBlack/1 rounded-full pl-[10px] mb-[20px]">
-                      <div className="relative flex items-center justify-center w-[10px] h-[10px]">
-                        <span className='absolute w-[8px] h-[8px] rounded-full bg-mountainGreen/40 animate-ping'></span>
-                        <span className="relative w-[6px] h-[6px] rounded-full bg-crayolaGreen"></span>
-                      </div>
-                      <p className="text-white text-sm">Orchestrating experiences at <span className="font-medium">AITINDO</span></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="flex items-center justify-center w-full border-t-1 border-oliveBlack/70 border-dashed lg:flex-row lg:border-0">
-                <div className="flex flex-col items-start justify-start gap-1 w-[90%] h-auto border-1 border-t-0 border-b-0 border-oliveBlack/70 lg:border-oliveBlack/40 border-dashed pt-2 pb-5 px-3 lg:w-full lg:h-[200px] lg:border-0 lg:border-b-1 lg:px-5">
-                  <h1 className="font-semibold text-white text-[38px] lg:text-[52px]">
-                    Hello! I&apos;m <span className="text-crayolaGreen">Yudha</span>
-                  </h1>
-                  <p className="text-seashell text-base leading-[20px]">
-                    Yudha is a detail-oriented and creative Developer with 3 years of experience,
-                    specializing in building responsive and dynamic web applications. He&apos;s passionate
-                    about web standards, clean code, and delivering user experiences that drive real impact.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-center justify-center w-full border-t-1 border-oliveBlack/70 border-dashed lg:flex-row lg:border-0">
-                <div className="flex flex-col items-start justify-start gap-8 w-[90%] h-[150px] border-1 border-t-0 border-b-0 border-oliveBlack/70 lg:border-oliveBlack/40 border-dashed pt-5 pb-5 px-3 lg:gap-[30px] lg:w-full lg:h-full lg:border-0 lg:border-b-1 lg:px-5">
-                  <div className='flex items-center justify-start gap-4 w-full lg:w-auto lg:gap-3 lg:justify-center mobile-md:gap-2'>
-                    <Button type='link' href='mailto:yudhaericpamungkas@gmail.com' variant='highlight'>Let&apos;s Talk</Button>
-                    <Button type='link' href='#projects-gradient' variant='basic'>View Projects</Button>
-                  </div>
-                  <div className='flex items-center justify-center gap-[13px] mb-[6px] lg:gap-[10px]'>
-                    {socialMedias.map((social) => {
-                      return (
-                        <a href={social.url} target="_blank" rel="noopener noreferrer" key={social.id} className='scale-icon w-[22px] h-[22px] lg:w-[18px] lg:h-[18px] 2xl:w-[20px] 2xl:h-[20px]'>
-                          <img src={social.icon} alt="" className='w-full h-full'/>
-                        </a>
-                      )
-                    })}
-                  </div>
-                </div>
-              </div>
-              <div className="flex items-center justify-center w-full">
-                <div className='w-full lg:w-full lg:h-[40px]'></div>
-              </div>
-            </div>
-            
-            {/* Picture */}
-            <div className='w-full h-[370px] flex flex-col items-center justify-center border-b-1 border-t-1 border-oliveBlack/70 lg:border-oliveBlack/40 border-dashed lg:flex-row lg:w-[41%] lg:h-[500px] lg:border-0 2xl:h-[502px] dlg:h-[501.5px]'>
-              <div className="flex flex-col items-center justify-center w-[90%] h-[370px] lg:w-full lg:h-full">
-                <div className="mobile-sm:hidden lg:flex items-center justify-center w-full h-[40px] 2xl:h-[40.5px] dlg:h-[40px]">
-                  <div className='w-full border-r-1 border-oliveBlack/70 lg:border-oliveBlack/40 border-dashed lg:w-full lg:h-full'></div>
-                </div>
-                
-                <div className="flex flex-col items-center justify-center gap-1 w-full h-[370px] border-l-1 border-r-1 border-oliveBlack/70 lg:border-oliveBlack/40 border-dashed lg:gap-0 lg:w-full lg:h-[420px] lg:border-t-1 lg:border-l-0 lg:border-b-1 2xl:h-[425px]"
-                  style={{
-                    backgroundImage: 'radial-gradient(circle, #3A3B3C 1px, transparent 1px)',
-                    backgroundSize: '10px 10px'
-                  }}
-                >
-                  <div className="bg-aeroBlue/10 rounded-[10px] w-[208px] h-[294px]">
-                    <img src="/images/pictures.png" alt="" className="w-full h-full rounded-[10px] animate-float3d" />
-                  </div>
-                </div>
-
-                <div id='bottom-grid-desktop' className="mobile-sm:hidden lg:flex items-center justify-center w-full lg:h-[40px] border-r-1 border-oliveBlack/40 border-dashed"></div>
-              </div>
-            </div>
-            <div id='bottom-grid-mobile' className="w-[90%] h-[60px] border-l-1 border-r-1 border-oliveBlack/70 border-dashed lg:hidden"></div>
-          </div>
-          <div id='outer-right-grid'>
-            <div className='hidden lg:flex flex-col items-center justify-center w-[40px] h-[420px] border-t-1 border-b-1 border-oliveBlack/70 lg:border-oliveBlack/40 border-dashed mt-[40px] lg:w-[40px] lg:h-[420px] 2xl:h-[422px] 2xl:mt-[39px]'></div>
-          </div>
-        </div>
-      </section>
-
-      <section id="featured-projects">
-        <div className="relative w-[90%] mx-auto mt-[70px] lg:w-[1050px] lg:mt-[100px]">
-          <div id='projects-gradient' className='absolute -top-14 -left-5 lg:-left-32 lg:-top-32'>
-            <p className="font-medium text-[90px] mobile-md:text-[100px] text-transparent bg-gradient-to-b from-[#A1A1A4]/15 lg:from-[#A1A1A4]/7 to-raisinBlack/1 to-80% bg-clip-text tracking-[-3%] lg:text-[200px]">
-              Projects
-            </p>
-          </div>
-          <div className='relative flex flex-col items-start justify-start gap-10 w-full mx-auto z-10 lg:gap-[43px] lg:w-[90%]'>
-            <div className='flex flex-col items-start justify-start'>
-              <h1 className="font-semibold text-transparent text-[38px] bg-gradient-to-b from-white to-[#999999] bg-clip-text lg:text-[42px]">
-                Featured Projects
-              </h1>
-              <p className='font-semibold text-sonicSilver text-base'>
-                A glimpse into the projects I&apos;ve built and contributed to.
-              </p>
-            </div>
-            <div className='flex flex-col items-center justify-center gap-[30px]'>
-              {projects.map((project) => {
-                return ( 
-                  <div key={project.id} className='flex flex-col items-center justify-center gap-5 w-full lg:flex-row'>
-                    <div className={`${project.id % 2 === 0 ? 'order-1 lg:order-2' : 'order-2 lg:order-1'} flex items-center justify-center w-full bg-raisinBlack bg-line-shape bg-no-repeat bg-cover rounded-[10px] p-4 lg:w-[305px] lg:h-[320px] lg:p-0`}>
-                      <img src={project.image} alt={project.title} className='w-full lg:w-[285px] lg:h-[210px]' />
-                    </div>
-                    <div className={`${project.id % 2 === 0 ? 'order-1' : 'order-2'} flex flex-col items-start justify-start w-full text-white border-1 border-oliveBlack/70 border-dashed rounded-[10px] p-5 lg:w-[630px] lg:h-[320px]`}>
-                      <h2 className='text-transparent font-bold text-3xl bg-gradient-to-b from-white to-[#999999] bg-clip-text mb-3 lg:mb-[10px]'>{project.title}</h2>
-                      <p className='text-seashell text-base leading-5 mb-[30px] lg:leading-6'>{project.desc}</p>
-                      <div className='flex flex-col gap-1 text-base leading-5 lg:leading-6'>
-                        <p className='font-bold text-seashell'>Tech Stack</p>
-                        <p className='text-seashell text-sm'>{project.tech}</p>
-                      </div>
-                      <div className='flex items-end justify-end w-full h-[36px] mt-10 lg:mt-5'>
-                        <Button type='link' href={project.url} variant='basic'>Open Website</Button>
-                      </div>
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id='get-in-touch'>
-        <div className="flex items-start justify-start gap-[1px] w-[90%] mt-[20px] mx-auto mb-10 lg:items-start lg:justify-start lg:w-[1050px] lg:mx-auto lg:h-[300px] lg:mt-[60px] lg:mb-0">
-          <div id='outer-left-grid'>
-            <div className='hidden lg:flex flex-col items-center justify-center w-[40px] h-[40px] border-b-1 border-oliveBlack/70 lg:border-oliveBlack/40 border-dashed'></div>
-          </div>
-          <div className='flex flex-col items-start justify-start gap-[1px] w-full h-full'>
-            <div className='flex flex-col items-center justify-center w-full h-[40px] lg:border-l-1 lg:border-b-1 lg:border-oliveBlack/40 lg:border-dashed'></div>
-            <div className='flex flex-col items-start justify-start gap-3 w-full h-[190px] lg:border-l-1 lg:border-oliveBlack/40 lg:border-dashed lg:pt-5 lg:pl-6'>
-              <h1 className='font-semibold text-transparent text-[32px] bg-gradient-to-b from-white to-[#999999] bg-clip-text lg:text-[28px]'>Get In Touch</h1>
-              <p className='text-base text-seashell leading-6 lg:leading-7'>
-                <span className='lg:block'>Do you have a job opportunity or idea you&apos;d like to discuss?</span> Feel free to reach me at 
-                <a href="mailto:yudhaericpamungkas@gmail.com" className='font-semibold text-seashell'> yudhaericpamungkas@gmail.com</a><br/>You can also find me on&nbsp;
-                <a href="https://www.linkedin.com/in/yudha-eric-pamungkas/" target="_blank" rel="noopener noreferrer" className='font-semibold text-seashell'>Linkedin</a>&nbsp;and&nbsp;
-                <a href="https://github.com/yudhaeric" target="_blank" rel="noopener noreferrer" className='font-semibold text-seashell'>Github</a>.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <AboutSection socialMedias={socialMedias} />
+      <ProjectsSection projects={projects} />
+      <ContactSection />
     </main>
   );
 }
