@@ -2,6 +2,7 @@
 'use client'
 import { useEffect, useRef } from 'react';
 import { useSectionStore } from '../store/sectionStore';
+import { useProjectsAnimation } from '../hooks/useProjectsAnimation';
 import Button from './ui/Button';
 import { Project } from '../utils/types';
 
@@ -12,6 +13,8 @@ interface ProjectsSectionProps {
 export default function ProjectsSection ({ projects }: ProjectsSectionProps) {
   const projectsRef = useRef<HTMLElement | null>(null);
   const setSectionRef = useSectionStore((state) => state.setSectionRef);
+
+  useProjectsAnimation(projectsRef);
   
   useEffect(() => {
     if (projectsRef.current) {
