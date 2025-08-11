@@ -1,4 +1,6 @@
 'use client'
+import { useEffect, useRef } from 'react';
+import { useSectionStore } from '../store/sectionStore';
 import Button from './ui/Button';
 import { SocialMedia } from '../utils/types';
 
@@ -7,8 +9,17 @@ interface AboutSectionProps {
 }
 
 export default function AboutSection ({ socialMedias }: AboutSectionProps) {
+  const aboutRef = useRef<HTMLElement | null>(null);
+  const setSectionRef = useSectionStore((state) => state.setSectionRef);
+  
+  useEffect(() => {
+    if (aboutRef.current) {
+      setSectionRef("about", aboutRef.current);
+    }
+  }, [setSectionRef]);
+
   return (
-    <section id="about">
+    <section ref={aboutRef} id="about">
       <div className="flex items-start justify-start w-full mt-[60px] lg:items-start lg:justify-start lg:w-[1050px] lg:mx-auto lg:h-[500px] lg:mt-[6%] dmd:mt-[7%]">
         <div id='outer-left-grid'>
           <div className='hidden lg:flex flex-col items-center justify-center w-[40px] h-[85.5px] border-t-1 border-b-1 border-oliveBlack/70 lg:border-oliveBlack/40 border-dashed lg:mt-[40px] dmd:h-[85px] 2xl:mt-[39px]'></div>

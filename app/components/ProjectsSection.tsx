@@ -1,5 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 'use client'
+import { useEffect, useRef } from 'react';
+import { useSectionStore } from '../store/sectionStore';
 import Button from './ui/Button';
 import { Project } from '../utils/types';
 
@@ -8,8 +10,17 @@ interface ProjectsSectionProps {
 }
 
 export default function ProjectsSection ({ projects }: ProjectsSectionProps) {
+  const projectsRef = useRef<HTMLElement | null>(null);
+  const setSectionRef = useSectionStore((state) => state.setSectionRef);
+  
+  useEffect(() => {
+    if (projectsRef.current) {
+      setSectionRef("projects", projectsRef.current);
+    }
+  }, [setSectionRef]);
+
   return (
-    <section id="featured-projects">
+    <section ref={projectsRef} id="featured-projects">
       <div className="relative w-[90%] mx-auto mt-[70px] lg:w-[1050px] lg:mt-[100px]">
         <div id='projects-gradient' className='absolute -top-14 -left-5 lg:-left-32 lg:-top-32'>
           <p className="font-medium text-[90px] mobile-md:text-[100px] text-transparent bg-gradient-to-b from-[#A1A1A4]/15 lg:from-[#A1A1A4]/7 to-raisinBlack/1 to-80% bg-clip-text tracking-[-3%] lg:text-[200px]">

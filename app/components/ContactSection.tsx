@@ -1,8 +1,19 @@
 'use client'
+import { useEffect, useRef } from 'react';
+import { useSectionStore } from '../store/sectionStore';
 
 export default function ContactSection () {
+  const contactRef = useRef<HTMLElement | null>(null);
+  const setSectionRef = useSectionStore((state) => state.setSectionRef);
+  
+  useEffect(() => {
+    if (contactRef.current) {
+      setSectionRef("contact", contactRef.current);
+    }
+  }, [setSectionRef]);
+
   return (
-    <section id='get-in-touch'>
+    <section ref={contactRef} id='get-in-touch'>
       <div className="flex items-start justify-start gap-[1px] w-[90%] mt-[20px] mx-auto mb-10 lg:items-start lg:justify-start lg:w-[1050px] lg:mx-auto lg:h-[300px] lg:mt-[60px] lg:mb-0">
         <div id='outer-left-grid'>
           <div className='hidden lg:flex flex-col items-center justify-center w-[40px] h-[40px] border-b-1 border-oliveBlack/70 lg:border-oliveBlack/40 border-dashed'></div>
