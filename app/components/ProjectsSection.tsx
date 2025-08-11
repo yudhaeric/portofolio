@@ -22,14 +22,14 @@ export default function ProjectsSection ({ projects }: ProjectsSectionProps) {
   return (
     <section ref={projectsRef} id="featured-projects">
       <div className="relative w-[90%] mx-auto mt-[70px] lg:w-[1050px] lg:mt-[100px]">
-        <div id='projects-gradient' className='absolute -top-14 -left-5 lg:-left-32 lg:-top-32'>
+        <div id='projects-gradient' className='hidden absolute -top-14 -left-5 lg:block lg:-left-32 lg:-top-32'>
           <p className="font-medium text-[90px] mobile-md:text-[100px] text-transparent bg-gradient-to-b from-[#A1A1A4]/15 lg:from-[#A1A1A4]/7 to-raisinBlack/1 to-80% bg-clip-text tracking-[-3%] lg:text-[200px]">
             Projects
           </p>
         </div>
         <div className='relative flex flex-col items-start justify-start gap-10 w-full mx-auto z-10 lg:gap-[43px] lg:w-[90%]'>
           <div className='flex flex-col items-start justify-start'>
-            <h1 className="font-semibold text-transparent text-[38px] bg-gradient-to-b from-white to-[#999999] bg-clip-text lg:text-[42px]">
+            <h1 className="font-semibold text-transparent text-[40px] bg-gradient-to-b from-white to-[#999999] bg-clip-text lg:text-[42px]">
               Featured Projects
             </h1>
             <p className='font-semibold text-sonicSilver text-base'>
