@@ -2,6 +2,7 @@
 'use client'
 import { useEffect, useRef } from 'react';
 import { useSectionStore } from '../store/sectionStore';
+import { useAboutAnimation } from '../hooks/useAboutAnimation';
 import Button from './ui/Button';
 import { SocialMedia } from '../utils/types';
 
@@ -12,6 +13,8 @@ interface AboutSectionProps {
 export default function AboutSection ({ socialMedias }: AboutSectionProps) {
   const aboutRef = useRef<HTMLElement | null>(null);
   const setSectionRef = useSectionStore((state) => state.setSectionRef);
+
+  useAboutAnimation(aboutRef);
   
   useEffect(() => {
     if (aboutRef.current) {
@@ -46,22 +49,22 @@ export default function AboutSection ({ socialMedias }: AboutSectionProps) {
             <div className="flex items-center justify-center w-full border-t-1 border-oliveBlack/70 border-dashed lg:flex-row lg:border-0">
               <div className='w-[90%] border-1 border-t-0 border-b-0 border-oliveBlack/70 lg:border-oliveBlack/40 border-dashed lg:w-full lg:h-[85px] lg:border-0 lg:border-t-1 lg:border-b-1'>
                 <div className="flex items-end justify-end w-full h-[80px] px-2 mobile-xl:w-[90%] sm:w-[60%] md:w-[50%] lg:w-[390px] lg:px-4">
-                  <div className="w-full h-[39px] flex items-center justify-start gap-[5px] bg-linear-to-r from-eucalyptusGreen/20 to-raisinBlack/1 rounded-full pl-[10px] mb-[20px]">
-                    <div className="relative flex items-center justify-center w-[10px] h-[10px]">
+                  <div id='experience-wrapper' className="w-full h-[39px] flex items-center justify-start gap-[5px] bg-linear-to-r from-eucalyptusGreen/20 to-raisinBlack/1 rounded-full pl-[10px] mb-[20px]">
+                    <div className="experience relative flex items-center justify-center w-[10px] h-[10px]">
                       <span className='absolute w-[8px] h-[8px] rounded-full bg-mountainGreen/40 animate-ping'></span>
                       <span className="relative w-[6px] h-[6px] rounded-full bg-crayolaGreen"></span>
                     </div>
-                    <p className="text-white text-sm">Orchestrating experiences at <span className="font-medium">AITINDO</span></p>
+                    <p className="experience text-white text-sm">Orchestrating experiences at <span className="font-medium">AITINDO</span></p>
                   </div>
                 </div>
               </div>
             </div>
             <div className="flex items-center justify-center w-full border-t-1 border-oliveBlack/70 border-dashed lg:flex-row lg:border-0">
               <div className="flex flex-col items-start justify-start gap-1 w-[90%] h-auto border-1 border-t-0 border-b-0 border-oliveBlack/70 lg:border-oliveBlack/40 border-dashed pt-2 pb-5 px-3 lg:w-full lg:h-[200px] lg:border-0 lg:border-b-1 lg:px-5">
-                <h1 className="font-semibold text-white text-[38px] lg:text-[52px]">
+                <h1 id='about-title' className="font-semibold text-white text-[38px] lg:text-[52px]">
                   Hello! I&apos;m <span className="text-crayolaGreen">Yudha</span>
                 </h1>
-                <p className="text-seashell text-base leading-[20px]">
+                <p id='about-desc' className="text-seashell text-base leading-[20px]">
                   Yudha is a detail-oriented and creative Developer with 3 years of experience,
                   specializing in building responsive and dynamic web applications. He&apos;s passionate
                   about web standards, clean code, and delivering user experiences that drive real impact.
@@ -70,7 +73,7 @@ export default function AboutSection ({ socialMedias }: AboutSectionProps) {
             </div>
             <div className="flex items-center justify-center w-full border-t-1 border-oliveBlack/70 border-dashed lg:flex-row lg:border-0">
               <div className="flex flex-col items-start justify-start gap-8 w-[90%] h-[150px] border-1 border-t-0 border-b-0 border-oliveBlack/70 lg:border-oliveBlack/40 border-dashed pt-5 pb-5 px-3 lg:gap-[30px] lg:w-full lg:h-full lg:border-0 lg:border-b-1 lg:px-5">
-                <div className='flex items-center justify-start gap-4 w-full lg:w-auto lg:gap-3 lg:justify-center mobile-md:gap-2'>
+                <div className='about-link flex items-center justify-start gap-4 w-full lg:w-auto lg:gap-3 lg:justify-center mobile-md:gap-2'>
                   <Button type='link' href='mailto:yudhaericpamungkas@gmail.com' variant='highlight'>Let&apos;s Talk</Button>
                   <Button
                     onClick={() => handleClickProjectsSection('projects')} 
@@ -79,7 +82,7 @@ export default function AboutSection ({ socialMedias }: AboutSectionProps) {
                     View Projects
                   </Button>
                 </div>
-                <div className='flex items-center justify-center gap-[13px] mb-[6px] lg:gap-[10px]'>
+                <div className='about-link flex items-center justify-center gap-[13px] mb-[6px] lg:gap-[10px]'>
                   {socialMedias.map((social) => {
                     return (
                       <a href={social.url} target="_blank" rel="noopener noreferrer" key={social.id} className='scale-icon w-[22px] h-[22px] lg:w-[18px] lg:h-[18px] 2xl:w-[20px] 2xl:h-[20px]'>
@@ -108,7 +111,7 @@ export default function AboutSection ({ socialMedias }: AboutSectionProps) {
                   backgroundSize: '10px 10px'
                 }}
               >
-                <div className="bg-aeroBlue/10 rounded-[10px] w-[208px] h-[294px]">
+                <div id='about-picture' className="bg-aeroBlue/10 rounded-[10px] w-[208px] h-[294px]">
                   <img src="/images/pictures.png" alt="" className="w-full h-full rounded-[10px] animate-float3d" />
                 </div>
               </div>
