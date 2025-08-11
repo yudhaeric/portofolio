@@ -10,12 +10,19 @@ const menuItems = [
 const Header = () => {
   const sectionRefs = useSectionStore((state) => state.sectionRefs);
 
-  const handleClickNavItem = (section: string) => {
-    const ref = sectionRefs[section];
-    if (ref) {
-      ref.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+const handleClickNavItem = (section: string) => {
+  const ref = sectionRefs[section];
+  if (ref) {
+    const offset = 120;
+    const elementPosition = ref.getBoundingClientRect().top + window.scrollY;
+    const offsetPosition = elementPosition - offset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth"
+    });
+  }
+};
 
   return (
     <header className="fixed top-5 left-0 right-0 mx-auto w-[300px] h-[55px] rounded-[10px] z-[99] lg:w-[320px]">
