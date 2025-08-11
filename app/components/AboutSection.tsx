@@ -27,7 +27,14 @@ export default function AboutSection ({ socialMedias }: AboutSectionProps) {
   const handleClickProjectsSection = (section: string) => {
     const ref = sectionRefs[section];
     if (ref) {
-      ref.scrollIntoView({ behavior: "smooth" });
+      const offset = 120;
+      const elementPosition = ref.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
     }
   };
 
