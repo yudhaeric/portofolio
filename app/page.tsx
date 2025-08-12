@@ -16,7 +16,7 @@ export default function Home() {
       id: 1, image: "/images/obhc-preview.png",
       title: "OBH Combi",
       url: "https://obhcombi.co.id/",
-      desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+      desc: "Corporate website for OBH Combi featuring two distinct themes for adults and children with separate, tailored product catalogs. The children's theme includes interactive maze and puzzle games to engage users. Built responsive and SEO-optimized for fast, accessible browsing on all devices.",
       tech: "NextJS 15 - JQuery - Redux - Tailwind CSS - Laravel"
     },
     { 
@@ -24,7 +24,7 @@ export default function Home() {
       image: "/images/parkserpong-preview.png",
       title: "Park Serpong",
       url: "https://parkserpong.com/",
-      desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+      desc: "Responsive real estate website for Park Serpong featuring an interactive mortgage simulation where users can input their budget to view matching properties. Includes an “Our Product” page, WhatsApp integration, and mobile-friendly design.",
       tech: "Umbraco CMS - C# - JQuery - Tailwind CSS"
     },
     { 
@@ -32,7 +32,7 @@ export default function Home() {
       image: "/images/combiphar-preview.png",
       title: "Combiphar",
       url: "https://www.combiphar.com/id",
-      desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+      desc: "Corporate website for Combiphar showcasing a categorized product catalog with detailed product pages, CSR & news sections, career pages, and multilingual support. Built responsive and SEO-conscious for fast, accessible browsing on mobile and desktop.",
       tech: "NextJS 14 - JQuery - Tailwind CSS - Laravel"
     },
   ];
