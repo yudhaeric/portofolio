@@ -61,7 +61,7 @@ export default function AboutSection ({ socialMedias }: AboutSectionProps) {
                       <span className='absolute w-[8px] h-[8px] rounded-full bg-mountainGreen/40 animate-ping'></span>
                       <span className="relative w-[6px] h-[6px] rounded-full bg-crayolaGreen"></span>
                     </div>
-                    <p className="experience text-white text-sm">Orchestrating experiences at <span className="font-medium">AITINDO</span></p>
+                    <a href='https://motorsights.com/' target='_blank' className="experience text-white text-sm">Orchestrating experiences at <span className="font-medium underline">Motor Sights</span></a>
                   </div>
                 </div>
               </div>
