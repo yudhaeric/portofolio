@@ -71,8 +71,8 @@ export default function AboutSection ({ socialMedias }: AboutSectionProps) {
                 <h1 id='about-title' className="font-semibold text-white text-[38px] lg:text-[52px]">
                   Hello! I&apos;m <span className="text-crayolaGreen">Yudha</span>
                 </h1>
-                <p id='about-desc' className="text-seashell text-base leading-[20px]">
-                  Yudha is a detail-oriented and creative Developer with 3 years of experience,
+                <p id='about-desc' className="text-seashell text-base leading-[24px]">
+                  Yudha is a detail-oriented and creative Developer with 4 years of experience,
                   specializing in building responsive and dynamic web applications. He&apos;s passionate
                   about web standards, clean code, and delivering user experiences that drive real impact.
                 </p>
@@ -91,9 +91,27 @@ export default function AboutSection ({ socialMedias }: AboutSectionProps) {
                 </div>
                 <div className='about-link flex items-center justify-center gap-[13px] mb-[6px] lg:gap-[10px]'>
                   {socialMedias.map((social) => {
+                    const socialName = social.icon.includes('whatsapp') ? 'WhatsApp' :
+                                       social.icon.includes('linkedin') ? 'LinkedIn' :
+                                       social.icon.includes('github') ? 'Github' :
+                                       social.icon.includes('instagram') ? 'Instagram' :
+                                       social.icon.includes('resume') ? 'Resume' : '';
                     return (
-                      <a href={social.url} target="_blank" rel="noopener noreferrer" key={social.id} className='scale-icon w-[22px] h-[22px] lg:w-[18px] lg:h-[18px] 2xl:w-[20px] 2xl:h-[20px]'>
+                      <a 
+                        href={social.url} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        key={social.id} 
+                        className='relative group scale-icon w-[22px] h-[22px] lg:w-[18px] lg:h-[18px] 2xl:w-[20px] 2xl:h-[20px]'
+                      >
                         <img src={social.icon} alt="" className='w-full h-full'/>
+                        {socialName && (
+                          <span className='absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 text-[10px] text-seashell bg-raisinBlack border border-oliveBlack/60 rounded-[4px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-50 shadow-lg'>
+                            {socialName}
+                            {/* Downward Arrow */}
+                            <span className='absolute top-full left-1/2 -translate-x-1/2 border-[4px] border-transparent border-t-raisinBlack'></span>
+                          </span>
+                        )}
                       </a>
                     )
                   })}

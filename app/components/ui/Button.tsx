@@ -44,7 +44,7 @@ export default function Button({
   
   // styles
   const baseWrapper = "flex items-center justify-center w-[140px] h-[48px] text-seashell text-sm rounded-[5px] transition-all duration-300 cursor-pointer p-[1px] lg:w-[121px] lg:h-[40px]";
-  const baseButton = "flex items-center justify-center w-full h-full rounded-[5px]";
+  const baseButton = "relative z-10 flex items-center justify-center w-full h-full rounded-[5px]";
   const borderGradient = "bg-gradient-to-br from-charlestonGreen via-platinum/40 via-[22%] to-charlestonGreen";
 
   const variants = {
@@ -52,7 +52,7 @@ export default function Button({
     basic: "bg-raisinBlack"
   };
 
-  const commonClassNames = `${baseWrapper} ${borderGradient} ${className}`;
+  const commonClassNames = `${baseWrapper} ${borderGradient} running-light-border ${className}`;
   const innerClassNames = `${baseButton} ${variants[variant]} ${className}`;
 
   if (type === 'link') {
