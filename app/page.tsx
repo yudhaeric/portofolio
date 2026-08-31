@@ -66,7 +66,7 @@ export default function Home() {
     <main>
       <AboutSection socialMedias={socialMedias} />
       <ProjectsSection projects={projects} />
-      <ContactSection />
+      <ContactSection socialMedias={socialMedias} />
     </main>
   );
 }
