@@ -60,9 +60,9 @@ export default function ProjectsSection ({ projects }: ProjectsSectionProps) {
                     <p className='text-seashell text-sm leading-5 mb-[30px] lg:leading-6'>{project.desc}</p>
                     <div className='flex flex-col gap-1 text-sm leading-5 lg:leading-6'>
                       <p className='font-semibold text-seashell'>Tech Stack</p>
-                      <p className='text-seashell text-sm'>{project.tech}</p>
+                      <p className='text-seashell text-sm leading-6'>{project.tech}</p>
                     </div>
-                    <div className='flex items-end justify-end w-full h-[28px] mt-10 lg:mt-5'>
+                    <div className='flex items-end justify-end w-full h-[26px] mt-10 lg:mt-7'>
                       <Button type='link' href={project.url} variant='basic'>Visit Website</Button>
                     </div>
                   </div>
