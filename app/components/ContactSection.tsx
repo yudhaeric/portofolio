@@ -131,7 +131,7 @@ export default function ContactSection ({ socialMedias = [] }: ContactSectionPro
                   variant="basic"
                   className="!w-full !h-full"
                 >
-                  Say Hello
+                  Reach Me
                 </Button>
               </div>
             </div>

@@ -32,7 +32,7 @@ export default function ProjectsSection ({ projects }: ProjectsSectionProps) {
     <section ref={projectsRef} id="featured-projects">
       <div className="relative w-[90%] mx-auto mt-[70px] lg:w-[1050px] lg:mt-[100px]">
         <div id='projects-gradient' className='hidden absolute -top-14 -left-5 lg:block lg:-left-32 lg:-top-32'>
-          <p className="font-medium text-[90px] mobile-md:text-[100px] text-transparent bg-gradient-to-b from-[#A1A1A4]/15 lg:from-[#A1A1A4]/7 to-raisinBlack/1 to-80% bg-clip-text tracking-[-3%] lg:text-[200px]">
+          <p className="font-medium text-[90px] mobile-md:text-[100px] text-transparent bg-gradient-to-b from-[#A1A1A4]/50 lg:from-[#A1A1A4]/10 to-raisinBlack/1 to-80% bg-clip-text tracking-[-3%] lg:text-[200px]">
             Projects
           </p>
         </div>
@@ -40,11 +40,11 @@ export default function ProjectsSection ({ projects }: ProjectsSectionProps) {
           <div className='flex flex-col items-start justify-start'>
             <h1 className="font-semibold text-[40px] text-white lg:text-[42px]">
               Featured{' '}
-              <span className="text-transparent bg-gradient-to-b from-[#131415] to-crayolaGreen bg-clip-text">
+              <span className="text-transparent bg-gradient-to-br from-[#5a5d63] from-[5%] via-crayolaGreen to-[#5a5d63] to-[95%] bg-clip-text">
                 Projects
               </span>
             </h1>
-            <p className='font-semibold text-sonicSilver text-base'>
+            <p className='font-medium text-sonicSilver text-sm lg:text-base'>
               A glimpse into the projects I&apos;ve built and contributed to.
             </p>
           </div>
@@ -62,7 +62,7 @@ export default function ProjectsSection ({ projects }: ProjectsSectionProps) {
                       <p className='font-semibold text-seashell'>Tech Stack</p>
                       <p className='text-seashell text-sm'>{project.tech}</p>
                     </div>
-                    <div className='flex items-end justify-end w-full h-[36px] mt-10 lg:mt-5'>
+                    <div className='flex items-end justify-end w-full h-[28px] mt-10 lg:mt-5'>
                       <Button type='link' href={project.url} variant='basic'>Visit Website</Button>
                     </div>
                   </div>

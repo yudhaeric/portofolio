@@ -126,7 +126,7 @@ const Header = () => {
                 <li key={item.name} className="flex-1 items-center justify-center">
                   <button
                     onClick={() => handleClickNavItem(item.section)}
-                    className={`w-full h-full font-semibold text-sm text-center transition-colors duration-300 block cursor-pointer py-2 lg:text-base ${
+                    className={`w-full h-full font-medium text-sm text-center transition-colors duration-300 block cursor-pointer py-2 lg:text-base ${
                       isActive ? 'text-crayolaGreen' : 'text-sonicSilver hover:text-seashell'
                     }`}
                   >

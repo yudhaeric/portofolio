@@ -39,8 +39,8 @@ export default function AboutSection ({ socialMedias }: AboutSectionProps) {
   };
 
   return (
-    <section ref={aboutRef} id="about">
-      <div className="flex items-start justify-start w-full mt-[60px] lg:items-start lg:justify-start lg:w-[1050px] lg:mx-auto lg:h-[500px] lg:mt-[6%] dmd:mt-[7%]">
+    <section ref={aboutRef} id="about" className="lg:min-h-screen lg:flex lg:items-center lg:justify-center w-full">
+      <div className="flex items-start justify-start w-full mt-[60px] lg:items-start lg:justify-start lg:w-[1050px] lg:mx-auto lg:h-[500px] lg:mt-0 dmd:mt-0 lg:-translate-y-8">
         <div id='outer-left-grid'>
           <div className='hidden lg:flex flex-col items-center justify-center w-[40px] h-[85.5px] border-t-1 border-b-1 border-oliveBlack/70 lg:border-oliveBlack/70 border-dashed lg:mt-[40px] dmd:h-[85px] 2xl:mt-[39px]'></div>
           <div className='hidden lg:flex flex-col items-center justify-center w-[40px] h-[200px] border-b-1 border-oliveBlack/70 lg:border-oliveBlack/70 border-dashed'></div>
@@ -69,7 +69,10 @@ export default function AboutSection ({ socialMedias }: AboutSectionProps) {
             <div className="flex items-center justify-center w-full border-t-1 border-oliveBlack/70 border-dashed lg:flex-row lg:border-0">
               <div className="flex flex-col items-start justify-start gap-1 w-[90%] h-auto border-1 border-t-0 border-b-0 border-oliveBlack/70 lg:border-oliveBlack/70 border-dashed pt-2 pb-5 px-3 lg:w-full lg:h-[200px] lg:border-0 lg:border-b-1 lg:px-5">
                 <h1 id='about-title' className="font-semibold text-white text-[38px] lg:text-[52px]">
-                  Hello! I&apos;m <span className="text-crayolaGreen">Yudha</span>
+                  Hello! I&apos;m{' '}
+                  <span className="text-transparent bg-gradient-to-br from-[#5a5d63] from-[5%] via-crayolaGreen to-[#5a5d63] to-[95%] bg-clip-text">
+                    Yudha
+                  </span>
                 </h1>
                 <p id='about-desc' className="text-seashell text-base leading-[24px]">
                   Yudha is a detail-oriented and creative Developer with 4 years of experience,
