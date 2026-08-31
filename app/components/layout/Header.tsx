@@ -99,7 +99,7 @@ const Header = () => {
       threshold: 0,
     });
 
-    elements.forEach(([_, element]) => {
+    elements.forEach(([, element]) => {
       if (element) {
         observer.observe(element);
       }
