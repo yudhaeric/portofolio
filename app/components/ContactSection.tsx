@@ -124,7 +124,7 @@ export default function ContactSection ({ socialMedias = [] }: ContactSectionPro
               <p className="text-sm text-sonicSilver leading-6">
                 Do you have a job opportunity or idea you&apos;d like to discuss? Feel free to reach out via email!
               </p>
-              <div className="mt-2 w-[140px] lg:w-[121px] h-[48px] lg:h-[40px]">
+              <div className="mt-2 w-[140px] lg:w-[121px] h-[40px] lg:h-[40px]">
                 <Button 
                   type="link" 
                   href="mailto:yudhaericpamungkas@gmail.com" 

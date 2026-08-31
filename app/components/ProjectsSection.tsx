@@ -62,7 +62,7 @@ export default function ProjectsSection ({ projects }: ProjectsSectionProps) {
                       <p className='font-semibold text-seashell'>Tech Stack</p>
                       <p className='text-seashell text-sm leading-6'>{project.tech}</p>
                     </div>
-                    <div className='flex items-end justify-end w-full h-[26px] mt-10 lg:mt-7'>
+                    <div className='flex items-end justify-end w-full h-[20px] lg:h-[26px] mt-10 lg:mt-7'>
                       <Button type='link' href={project.url} variant='basic'>Visit Website</Button>
                     </div>
                   </div>
