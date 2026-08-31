@@ -38,8 +38,11 @@ export default function ProjectsSection ({ projects }: ProjectsSectionProps) {
         </div>
         <div className='relative flex flex-col items-start justify-start gap-10 w-full mx-auto z-10 lg:gap-[43px] lg:w-[90%]'>
           <div className='flex flex-col items-start justify-start'>
-            <h1 className="font-semibold text-transparent text-[40px] bg-gradient-to-b from-white to-[#999999] bg-clip-text lg:text-[42px]">
-              Featured Projects
+            <h1 className="font-semibold text-[40px] text-white lg:text-[42px]">
+              Featured{' '}
+              <span className="text-transparent bg-gradient-to-b from-[#131415] to-crayolaGreen bg-clip-text">
+                Projects
+              </span>
             </h1>
             <p className='font-semibold text-sonicSilver text-base'>
               A glimpse into the projects I&apos;ve built and contributed to.
