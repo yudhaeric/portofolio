@@ -31,8 +31,41 @@ const inter = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Inside Yudha",
-  description: "Yudha Portofolio Landing",
+  title: "Yudha Eric Pamungkas — Frontend Engineer",
+  description: "Portfolio of Yudha Eric Pamungkas, a detail-oriented Frontend Engineer specializing in building modern, performant, and scalable web applications.",
+  keywords: [
+    "Yudha Eric Pamungkas",
+    "Frontend Engineer",
+    "Web Developer",
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "Portfolio"
+  ],
+  authors: [{ name: "Yudha Eric Pamungkas" }],
+  creator: "Yudha Eric Pamungkas",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    title: "Yudha Eric Pamungkas — Frontend Engineer",
+    description: "Building thoughtful and scalable web experiences with clean code, scalability, and attention to detail.",
+    siteName: "Inside Yudha",
+    images: [
+      {
+        url: "/images/pictures.png",
+        width: 800,
+        height: 600,
+        alt: "Yudha Eric Pamungkas - Frontend Engineer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Yudha Eric Pamungkas — Frontend Engineer",
+    description: "Building thoughtful and scalable web experiences with clean code, scalability, and attention to detail.",
+    images: ["/images/pictures.png"],
+  },
 };
 
 export default function RootLayout({

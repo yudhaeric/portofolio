@@ -8,20 +8,20 @@ export const useProjectsAnimation = (elementRef: RefObject<HTMLElement | null>) 
 
     if (!elementRef.current) return;
 
-    const projectsAnimation = gsap.timeline({
-      scrollTrigger: {
-        trigger: elementRef.current,
-        start: "top 95%",
-        toggleActions: "play reverse play reverse",
-        // markers: true,
-      }
-    });
+    const ctx = gsap.context(() => {
+      gsap.from("#featured-projects", {
+        y: 40,
+        opacity: 0,
+        duration: 0.6,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: elementRef.current,
+          start: "top 90%",
+          toggleActions: "play none none none",
+        }
+      });
+    }, elementRef);
 
-    projectsAnimation.from("#featured-projects", {
-      y: 40,
-      opacity: 0,
-      duration: 0.5,
-      ease: "power2.out"
-    });
+    return () => ctx.revert();
   }, [elementRef]);
 };

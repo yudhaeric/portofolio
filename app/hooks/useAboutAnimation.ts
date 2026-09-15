@@ -8,52 +8,43 @@ export const useAboutAnimation = (elementRef: RefObject<HTMLElement | null>) => 
 
     if (!elementRef.current) return;
 
-    gsap.from("#experience-wrapper", {
-      scaleX: 0,
-      transformOrigin: "left center",
-      duration: 0.7,
-      delay: 1.5,
-      ease: "power2.out"
-    });
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        defaults: { ease: "power2.out" }
+      });
 
-    const fadeinAnimation = gsap.timeline();
-
-    fadeinAnimation
-      .from("#about-title", {
+      tl.from("#about-title", {
+        y: 20,
         opacity: 0,
-        duration: 1,
-        delay: 0.5,
-        ease: "power2.out"
+        duration: 0.6,
       })
       .from("#about-desc", {
-        y: 10,
+        y: 15,
         opacity: 0,
-        delay: 0.5,
-        duration: 1,
-        ease: "power2.out"
-      }, "<")
+        duration: 0.6,
+      }, "-=0.35")
+      .from("#experience-wrapper", {
+        scaleX: 0,
+        transformOrigin: "left center",
+        duration: 0.5,
+      }, "-=0.3")
       .from(".experience", {
         opacity: 0,
-        duration: 1,
-        delay: 0.1,
-        ease: "power2.out"
-      })
+        duration: 0.4,
+      }, "-=0.2")
+      .from(".about-link", {
+        y: 15,
+        opacity: 0,
+        duration: 0.5,
+        stagger: 0.08,
+      }, "-=0.2")
+      .from("#about-picture", {
+        y: 20,
+        opacity: 0,
+        duration: 0.6,
+      }, "-=0.4");
+    }, elementRef);
 
-    gsap.from(".about-link", {
-      y: 20,
-      opacity: 0,
-      delay: 2.6,
-      duration: 1,
-      ease: "power2.out"
-    });
-    
-    gsap.from("#about-picture", {
-      y: 20,
-      opacity: 0,
-      delay: 3.1,
-      duration: 1,
-      ease: "power2.out",
-    });
-
+    return () => ctx.revert();
   }, [elementRef]);
 };

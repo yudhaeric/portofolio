@@ -4,11 +4,11 @@ import ContactSection from './components/ContactSection';
 
 export default function Home() {
   const socialMedias = [
-    { id: 1, url: "https://wa.me/62895330028942", icon: "/icons/whatsapp.svg"},
-    { id: 2, url: "https://www.linkedin.com/in/yudha-eric-pamungkas/", icon: "/icons/linkedin.svg"},
-    { id: 3, url: "https://github.com/yudhaeric", icon: "/icons/github.svg"},
-    { id: 4, url: "https://www.instagram.com/yudhapmksss/", icon: "/icons/instagram.svg"},
-    { id: 5, url: "https://drive.google.com/file/d/1-Jiw5CyA9SzDEL2IWx3qQz-rW9eQOwZ1/view?usp=sharing", icon: "/icons/resume.svg"},
+    { id: 1, url: "https://wa.me/62895330028942", icon: "/icons/whatsapp.svg", name: "whatsapp" },
+    { id: 2, url: "https://www.linkedin.com/in/yudha-eric-pamungkas/", icon: "/icons/linkedin.svg", name: "linkedin" },
+    { id: 3, url: "https://github.com/yudhaeric", icon: "/icons/github.svg", name: "github" },
+    { id: 4, url: "https://www.instagram.com/yudhapmksss/", icon: "/icons/instagram.svg", name: "instagram" },
+    { id: 5, url: "https://drive.google.com/file/d/1-Jiw5CyA9SzDEL2IWx3qQz-rW9eQOwZ1/view?usp=sharing", icon: "/icons/resume.svg", name: "resume" }
   ];
   
   const projects = [
@@ -17,8 +17,8 @@ export default function Home() {
       image: "/images/wms-preview.png",
       title: "Warehouse Management System",
       url: "https://waretech-preprod.iti.co.id/",
-      desc: "An enterprise-grade Warehouse Management System designed to optimize logistics. Features streamlined Inbound receiving, Outbound fulfillment (picking and packing), and Inventory controls like cycle counting. Built with strict role-based access control, multi-language support, and Excel reporting.",
-      tech: "Next.js 15 - React 19 - TypeScript - Tailwind CSS - TanStack Query & Table - Zod Validation"
+      desc: "An enterprise-grade Warehouse Management System designed to streamline logistics operations. It supports Inbound receiving, Outbound fulfillment including picking and packing, and Inventory management with features like cycle counting. The system also includes role-based access control, multi-language support, and Excel reporting.",
+      tech: "Next.js · TypeScript · Tailwind CSS · TanStack Query · TanStack Table · Zod"
     },
     { 
       id: 2,
@@ -26,21 +26,21 @@ export default function Home() {
       title: "Park Serpong",
       url: "https://parkserpong.com/",
       desc: "Responsive real estate website for Park Serpong featuring an interactive mortgage simulation where users can input their budget to view matching properties. Includes an “Our Product” page, WhatsApp integration, and mobile-friendly design.",
-      tech: "Umbraco CMS - C# - JQuery - Tailwind CSS"
+      tech: "Umbraco · C# · jQuery · Tailwind CSS"
     },
     { 
       id: 3,
       image: "/images/teh-botol-sosro-preview.png",
       title: "Teh Botol Sosro",
       url: "https://www.tehbotolsosro.com/",
-      desc: "Official brand website for Teh Botol Sosro featuring a custom geolocation-based greeting system that dynamically adapts to Indonesian regional cultures. Includes multi-language support (i18n), interactive brand campaigns, and a Backpack CRUD admin dashboard to manage articles, campaigns, and events.",
-      tech: "Laravel 10 - PHP 8.1 - Backpack CRUD - Tailwind CSS - Vite - jQuery - Geolocation API"
+      desc: "Official brand website for Teh Botol Sosro featuring a custom geolocation-based greeting system that dynamically adapts to Indonesian regional cultures. Interactive brand campaigns, and a Backpack CRUD admin dashboard to manage articles, campaigns, and events.",
+      tech: "Laravel · PHP · Backpack · Tailwind CSS · Vite · jQuery"
     },
     { 
       id: 4,
       image: "/images/es-poci-preview.png",
       title: "Es Teh Poci",
-      url: "es-poci-preview.png",
+      url: "https://estehpoci.id/",
       desc: "Interactive franchise and brand portal for Es Teh Poci. Features a dynamic partner registration flow ('Jadi Juragan') synced with the Google Sheets API for real-time lead capture, a custom personality quiz engine matching users to product flavors, and highly engaging scroll animations using GSAP.",
       tech: "Laravel 12 - PHP 8.2 - Backpack CRUD - Tailwind CSS v4 - Vite 6 - GSAP - Google Sheets API - Swiper"
     },

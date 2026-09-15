@@ -1,4 +1,5 @@
 export interface SocialMedia {
+  name: string;
   id: number;
   url: string;
   icon: string;

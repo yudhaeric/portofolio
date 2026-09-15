@@ -53,7 +53,7 @@ export default function ContactSection ({ socialMedias = [] }: ContactSectionPro
                 Yudha Eric Pamungkas
               </h2>
               <p className="text-sm text-sonicSilver leading-6 max-w-[280px]">
-                A creative developer specializing in building responsive and dynamic web applications.
+                Building thoughtful web experiences with clean code, scalability, and attention to detail.
               </p>
               <div className="flex items-center gap-[13px] mt-2">
                 {socialMedias.map((social) => {
@@ -68,7 +68,7 @@ export default function ContactSection ({ socialMedias = [] }: ContactSectionPro
                       target="_blank" 
                       rel="noopener noreferrer" 
                       key={social.id} 
-                      className='relative group scale-icon w-[20px] h-[20px] lg:w-[20px] lg:h-[20px]'
+                      className={`${social.name === "whatsapp" ? "w-28 h-28" : ""} relative group scale-icon w-[20px] h-[20px] lg:w-[20px] lg:h-[20px]`}
                     >
                       <img src={social.icon} alt="" className='w-full h-full brightness-0 invert opacity-60 hover:opacity-100 transition-opacity duration-300'/>
                       {socialName && (

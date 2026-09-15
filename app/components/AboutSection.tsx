@@ -42,19 +42,42 @@ export default function AboutSection ({ socialMedias }: AboutSectionProps) {
     <section ref={aboutRef} id="about" className="lg:min-h-screen lg:flex lg:items-center lg:justify-center w-full">
       <div className="flex items-start justify-start w-full mt-[60px] lg:items-start lg:justify-start lg:w-[1050px] lg:mx-auto lg:h-[500px] lg:mt-0 dmd:mt-0 lg:-translate-y-8">
         <div id='outer-left-grid'>
-          <div className='hidden lg:flex flex-col items-center justify-center w-[40px] h-[85.5px] border-t-1 border-b-1 border-oliveBlack/70 lg:border-oliveBlack/70 border-dashed lg:mt-[40px] dmd:h-[85px] 2xl:mt-[39px]'></div>
-          <div className='hidden lg:flex flex-col items-center justify-center w-[40px] h-[200px] border-b-1 border-oliveBlack/70 lg:border-oliveBlack/70 border-dashed'></div>
-          <div className='hidden lg:flex flex-col items-center justify-center w-[40px] h-[134.5px] border-b-1 border-oliveBlack/70 lg:border-oliveBlack/70 border-dashed dmd:h-[135px] 2xl:h-[137px]'></div>
+          <div className='hidden lg:flex flex-col items-center justify-center w-[40px] dmd:w-[60px] h-[85.5px] border-t-1 border-b-1 border-oliveBlack/70 lg:border-oliveBlack/40 border-dashed lg:mt-[40px] dmd:h-[85px] 2xl:mt-[39px]'></div>
+          <div className='hidden lg:flex flex-col items-center justify-center w-[40px] dmd:w-[60px] h-[200px] border-b-1 border-oliveBlack/70 lg:border-oliveBlack/40 border-dashed'></div>
+          <div className='hidden lg:flex flex-col items-center justify-center w-[40px] dmd:w-[60px] h-[134.5px] border-b-1 border-oliveBlack/70 lg:border-oliveBlack/40 border-dashed dmd:h-[135px] 2xl:h-[137px]'></div>
         </div>
         <div className='flex flex-col items-center justify-center gap-[1px] w-full h-full lg:flex-row lg:justify-between'>
-          <div id='top-grid-mobile' className="w-[90%] h-[40px] border-l-1 border-r-1 border-oliveBlack/70 border-dashed lg:hidden"></div>
+          <div id='top-grid-mobile' className="w-[90%] h-[40px] dmd:h-[60px] border-l-1 border-r-1 border-oliveBlack/70 border-dashed lg:hidden"></div>
           {/* Summary */}
-          <div className='flex flex-col items-center justify-center w-full lg:w-[60%] lg:border-l-1 lg:border-r-1 lg:border-oliveBlack/70 lg:border-dashed'>
+          <div className='relative flex flex-col items-center justify-center w-full lg:w-[60%]'>
+            <div 
+              className='hidden lg:block absolute inset-0 border-l-1 border-r-1 border-dashed border-oliveBlack pointer-events-none'
+              style={{
+                maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.4) 100%)',
+                WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.4) 100%)',
+              }}
+            />
             <div className="flex items-center justify-center w-full">
-              <div className='w-full lg:w-full lg:h-[40px]'></div>
+              <div className='w-full lg:w-full lg:h-[40px] dmd:h-[60px]'></div>
             </div>
             <div className="flex items-center justify-center w-full border-t-1 border-oliveBlack/70 border-dashed lg:flex-row lg:border-0">
-              <div className='w-[90%] border-1 border-t-0 border-b-0 border-oliveBlack/70 lg:border-oliveBlack/70 border-dashed lg:w-full lg:h-[85px] lg:border-0 lg:border-t-1 lg:border-b-1'>
+              <div className='relative w-[90%] border-1 border-t-0 border-b-0 border-oliveBlack/70 border-dashed lg:w-full lg:h-[85px] lg:border-0 lg:border-t-1 lg:border-b-1'>
+                <svg
+                  aria-hidden="true"
+                  className="absolute -top-[37.5px] -left-[37.5px] pointer-events-none z-10"
+                  data-side="top-left"
+                  fill="none"
+                  height="75"
+                  viewBox="0 0 75 75"
+                  width="75"
+                >
+                  <path
+                    d="M74 37.5C74 30.281 71.8593 23.2241 67.8486 17.2217C63.838 11.2193 58.1375 6.541 51.4679 3.7784C44.7984 1.0158 37.4595 0.292977 30.3792 1.70134C23.2989 3.1097 16.7952 6.58599 11.6906 11.6906C6.58599 16.7952 3.1097 23.2989 1.70134 30.3792C0.292977 37.4595 1.0158 44.7984 3.7784 51.4679C6.541 58.1375 11.2193 63.838 17.2217 67.8486C23.2241 71.8593 30.281 74 37.5 74"
+                    stroke="#3A3B3C"
+                    strokeOpacity="0.7"
+                    strokeDasharray="2 2"
+                  />
+                </svg>
                 <div className="flex items-end justify-end w-full h-[80px] px-2 mobile-xl:w-[90%] sm:w-[60%] md:w-[50%] lg:w-[390px] lg:px-4">
                   <div id='experience-wrapper' className="w-full h-[39px] flex items-center justify-start gap-[5px] bg-linear-to-r from-eucalyptusGreen/20 to-raisinBlack/1 rounded-full pl-[10px] mb-[20px]">
                     <div className="experience relative flex items-center justify-center w-[10px] h-[10px]">
@@ -67,24 +90,23 @@ export default function AboutSection ({ socialMedias }: AboutSectionProps) {
               </div>
             </div>
             <div className="flex items-center justify-center w-full border-t-1 border-oliveBlack/70 border-dashed lg:flex-row lg:border-0">
-              <div className="flex flex-col items-start justify-start gap-1 w-[90%] h-auto border-1 border-t-0 border-b-0 border-oliveBlack/70 lg:border-oliveBlack/70 border-dashed pt-2 pb-5 px-3 lg:w-full lg:h-[200px] lg:border-0 lg:border-b-1 lg:px-5">
+              <div className="flex flex-col items-start justify-start gap-1 w-[90%] h-auto border-1 border-t-0 border-b-0 border-oliveBlack/70 border-dashed pt-2 pb-5 px-3 lg:w-full lg:h-[200px] lg:border-0 lg:border-b-1 lg:px-5">
                 <h1 id='about-title' className="font-semibold text-white text-[38px] lg:text-[52px]">
-                  Hello! I&apos;m{' '}
+                  Hey! I&apos;m{' '}
                   <span className="text-transparent bg-gradient-to-br from-[#5a5d63] from-[5%] via-crayolaGreen to-[#5a5d63] to-[95%] bg-clip-text">
                     Yudha
                   </span>
                 </h1>
                 <p id='about-desc' className="text-seashell text-base leading-[24px]">
-                  Yudha is a detail-oriented and creative Developer with 4 years of experience,
-                  specializing in building responsive and dynamic web applications. He&apos;s passionate
-                  about web standards, clean code, and delivering user experiences that drive real impact.
+                  I’m a detail-oriented Frontend Engineer focused on turning complex ideas into simple, intuitive web experiences.
+                  I care about clean code, thoughtful interfaces, and building scalable applications that are practical, reliable, and easy to use.
                 </p>
               </div>
             </div>
             <div className="flex items-center justify-center w-full border-t-1 border-oliveBlack/70 border-dashed lg:flex-row lg:border-0">
-              <div className="flex flex-col items-start justify-start gap-8 w-[90%] h-[150px] border-1 border-t-0 border-b-0 border-oliveBlack/70 lg:border-oliveBlack/70 border-dashed pt-5 pb-5 px-3 lg:gap-[30px] lg:w-full lg:h-full lg:border-0 lg:border-b-1 lg:px-5">
+              <div className="flex flex-col items-start justify-start gap-8 w-[90%] h-[150px] border-1 border-t-0 border-b-0 border-oliveBlack/70 border-dashed pt-5 pb-5 px-3 lg:gap-[30px] lg:w-full lg:h-full lg:border-0 lg:border-b-1 lg:px-5">
                 <div className='about-link flex items-center justify-start gap-4 w-full lg:w-auto lg:gap-3 lg:justify-center mobile-md:gap-2'>
-                  <Button type='link' href='mailto:yudhaericpamungkas@gmail.com' variant='highlight'>Let&apos;s Talk</Button>
+                  <Button type='link' href='mailto:yudhaericpamungkas@gmail.com' variant='highlight'>Get in Touch</Button>
                   <Button
                     onClick={() => handleClickProjectsSection('projects')} 
                     variant='basic'
@@ -94,11 +116,11 @@ export default function AboutSection ({ socialMedias }: AboutSectionProps) {
                 </div>
                 <div className='about-link flex items-center justify-center gap-[13px] mb-[6px] lg:gap-[10px]'>
                   {socialMedias.map((social) => {
-                    const socialName = social.icon.includes('whatsapp') ? 'WhatsApp' :
+                    const socialName = social.icon.includes('resume') ? 'Resume' :
                                        social.icon.includes('linkedin') ? 'LinkedIn' :
                                        social.icon.includes('github') ? 'Github' :
-                                       social.icon.includes('instagram') ? 'Instagram' :
-                                       social.icon.includes('resume') ? 'Resume' : '';
+                                       social.icon.includes('whatsapp') ? 'WhatsApp' : 
+                                       social.icon.includes('instagram') ? 'Instagram' : "";
                     return (
                       <a 
                         href={social.url} 
@@ -122,18 +144,18 @@ export default function AboutSection ({ socialMedias }: AboutSectionProps) {
               </div>
             </div>
             <div className="flex items-center justify-center w-full">
-              <div className='w-full lg:w-full lg:h-[40px]'></div>
+              <div className='w-full lg:w-full lg:h-[40px] dmd:h-[60px]'></div>
             </div>
           </div>
           
           {/* Picture */}
-          <div className='w-full h-[370px] flex flex-col items-center justify-center border-b-1 border-t-1 border-oliveBlack/70 lg:border-oliveBlack/70 border-dashed lg:flex-row lg:w-[41%] lg:h-[500px] lg:border-0 2xl:h-[502px] dlg:h-[501.5px]'>
+          <div className='w-full h-[370px] flex flex-col items-center justify-center border-b-1 border-t-1 border-oliveBlack/70 lg:border-oliveBlack/40 border-dashed lg:flex-row lg:w-[41%] lg:h-[420px] lg:border-0 dmd:h-[550px]'>
             <div className="flex flex-col items-center justify-center w-[90%] h-[370px] lg:w-full lg:h-full">
-              <div className="mobile-sm:hidden lg:flex items-center justify-center w-full h-[40px] 2xl:h-[40.5px] dlg:h-[40px]">
-                <div className='w-full border-r-1 border-oliveBlack/70 lg:border-oliveBlack/70 border-dashed lg:w-full lg:h-full'></div>
+              <div className="mobile-sm:hidden lg:flex items-center justify-center w-full h-[40px] dmd:h-[60px]">
+                <div className='w-full border-r-1 border-oliveBlack/70 lg:border-oliveBlack/40 border-dashed lg:w-full h-full'></div>
               </div>
               
-              <div className="flex flex-col items-center justify-center gap-1 w-full h-[370px] border-l-1 border-r-1 border-oliveBlack/70 lg:border-oliveBlack/70 border-dashed lg:gap-0 lg:w-full lg:h-[420px] lg:border-t-1 lg:border-l-0 lg:border-b-1 2xl:h-[425px]"
+              <div className="flex flex-col items-center justify-center gap-1 w-full h-[370px] border-l-1 border-r-1 border-oliveBlack/70 border-dashed lg:gap-0 lg:w-full lg:h-[420px] lg:border-t-1 lg:border-l-0 lg:border-b-1 dmd:h-[422px]"
                 style={{
                   backgroundImage: 'radial-gradient(circle, #3A3B3C 1px, transparent 1px)',
                   backgroundSize: '10px 10px'
@@ -144,13 +166,13 @@ export default function AboutSection ({ socialMedias }: AboutSectionProps) {
                 </div>
               </div>
 
-              <div id='bottom-grid-desktop' className="mobile-sm:hidden lg:flex items-center justify-center w-full lg:h-[40px] border-r-1 border-oliveBlack/40 border-dashed"></div>
+              <div id='bottom-grid-desktop' className="mobile-sm:hidden lg:flex items-center justify-center w-full lg:h-[40px] dmd:h-[60px] border-r-1 border-oliveBlack/40 border-dashed"></div>
             </div>
           </div>
           <div id='bottom-grid-mobile' className="w-[90%] h-[60px] border-l-1 border-r-1 border-oliveBlack/70 border-dashed lg:hidden"></div>
         </div>
         <div id='outer-right-grid'>
-          <div className='hidden lg:flex flex-col items-center justify-center w-[40px] h-[420px] border-t-1 border-b-1 border-oliveBlack/70 lg:border-oliveBlack/40 border-dashed mt-[40px] lg:w-[40px] lg:h-[420px] 2xl:h-[422px] 2xl:mt-[39px]'></div>
+          <div className='hidden lg:flex flex-col items-center justify-center w-[40px] h-[420px] border-t-1 border-b-1 border-oliveBlack/70 lg:border-oliveBlack/40 border-dashed mt-[40px] lg:w-[40px] dmd:w-[60px] lg:h-[420px] 2xl:h-[422px] 2xl:mt-[39px]'></div>
         </div>
       </div>
     </section>
