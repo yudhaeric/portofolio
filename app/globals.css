@@ -78,6 +78,101 @@ h1 {
   border-image-slice: 1;
 }
 
+@keyframes gridBeamAboutH {
+  0% {
+    transform: translateX(-160px);
+    opacity: 0;
+  }
+  2% {
+    opacity: 1;
+  }
+  98% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(calc(100% + 500px));
+    opacity: 0;
+  }
+}
+
+@keyframes gridBeamPhotoH {
+  0% {
+    transform: translateX(-140px);
+    opacity: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  98% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(calc(100% + 200px));
+    opacity: 0;
+  }
+}
+
+@keyframes gridBeamV {
+  0% {
+    transform: translateY(-160px);
+    opacity: 0;
+  }
+  2% {
+    opacity: 1;
+  }
+  98% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(calc(100% + 400px));
+    opacity: 0;
+  }
+}
+
+.grid-beam-h-about {
+  opacity: 0;
+  transform: translateX(-160px);
+  will-change: transform, opacity;
+  animation-name: gridBeamAboutH;
+  animation-duration: 0.85s;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+  animation-fill-mode: both;
+}
+
+.grid-beam-h-photo {
+  opacity: 0;
+  transform: translateX(-140px);
+  will-change: transform, opacity;
+  animation-name: gridBeamPhotoH;
+  animation-duration: 0.6s;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+  animation-fill-mode: both;
+}
+
+.grid-beam-v {
+  opacity: 0;
+  transform: translateY(-160px);
+  will-change: transform, opacity;
+  animation-name: gridBeamV;
+  animation-duration: 1.1s;
+  animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+  animation-iteration-count: 1;
+  animation-fill-mode: both;
+}
+
+/* Staggered Delay Classes (snappy sub-second timing with seamless hand-off) */
+.beam-delay-top-about    { animation-delay: 0.2s; }
+.beam-delay-top-photo    { animation-delay: 0.85s; }
+.beam-delay-bottom-about { animation-delay: 0.4s; }
+.beam-delay-bottom-photo { animation-delay: 1.05s; }
+.beam-delay-badge        { animation-delay: 0.3s; }
+.beam-delay-bio          { animation-delay: 0.5s; }
+.beam-delay-v-left       { animation-delay: 0.25s; }
+.beam-delay-v-mid        { animation-delay: 0.45s; }
+.beam-delay-v-right      { animation-delay: 0.75s; }
+
 .scale-icon:hover {
   transform: scale(1.2);
   transition: all 0.3s ease-in-out;
