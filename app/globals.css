@@ -84,10 +84,10 @@ h1 {
     opacity: 0;
   }
   2% {
-    opacity: 1;
+    opacity: 0.55;
   }
   98% {
-    opacity: 1;
+    opacity: 0.55;
   }
   100% {
     transform: translateX(calc(100% + 500px));
@@ -101,10 +101,10 @@ h1 {
     opacity: 0;
   }
   1% {
-    opacity: 1;
+    opacity: 0.55;
   }
   98% {
-    opacity: 1;
+    opacity: 0.55;
   }
   100% {
     transform: translateX(calc(100% + 200px));
@@ -118,10 +118,10 @@ h1 {
     opacity: 0;
   }
   2% {
-    opacity: 1;
+    opacity: 0.55;
   }
   98% {
-    opacity: 1;
+    opacity: 0.55;
   }
   100% {
     transform: translateY(calc(100% + 400px));

@@ -11,13 +11,13 @@ interface AboutSectionProps {
 }
 
 const beamHorizontalStyle = {
-  background: 'linear-gradient(90deg, transparent 0%, #10B981 35%, #D1FAE5 50%, #10B981 65%, transparent 100%)',
-  filter: 'drop-shadow(0 0 5px rgba(16, 185, 129, 0.6))',
+  background: 'linear-gradient(90deg, transparent 0%, rgba(156, 163, 175, 0.4) 35%, rgba(243, 244, 246, 0.75) 50%, rgba(156, 163, 175, 0.4) 65%, transparent 100%)',
+  filter: 'drop-shadow(0 0 3px rgba(229, 231, 235, 0.3))',
 };
 
 const beamVerticalStyle = {
-  background: 'linear-gradient(180deg, transparent 0%, #10B981 35%, #D1FAE5 50%, #10B981 65%, transparent 100%)',
-  filter: 'drop-shadow(0 0 5px rgba(16, 185, 129, 0.6))',
+  background: 'linear-gradient(180deg, transparent 0%, rgba(156, 163, 175, 0.4) 35%, rgba(243, 244, 246, 0.75) 50%, rgba(156, 163, 175, 0.4) 65%, transparent 100%)',
+  filter: 'drop-shadow(0 0 3px rgba(229, 231, 235, 0.3))',
 };
 
 export default function AboutSection ({ socialMedias }: AboutSectionProps) {
@@ -90,14 +90,14 @@ export default function AboutSection ({ socialMedias }: AboutSectionProps) {
             <div className="flex items-center justify-center w-full border-t-1 border-oliveBlack/70 border-dashed lg:flex-row lg:border-0">
               <div className='relative w-[90%] border-1 border-t-0 border-b-0 border-oliveBlack/70 border-dashed lg:w-full lg:h-[85px] lg:border-0 lg:border-t-1 lg:border-b-1'>
                 {/* Horizontal Running Grid Beam (Top Line) */}
-                <div className='absolute -top-[0.5px] left-0 w-full h-[1px] overflow-hidden pointer-events-none z-10'>
+                <div className='hidden lg:block absolute -top-[0.5px] left-0 w-full h-[1px] overflow-hidden pointer-events-none z-10'>
                   <div 
                     className={`${isMounted ? 'grid-beam-h-about beam-delay-top-about' : 'opacity-0'} h-full w-[150px]`} 
                     style={beamHorizontalStyle}
                   />
                 </div>
                 {/* Horizontal Running Grid Beam (Below Badge Line) */}
-                <div className='absolute -bottom-[0.5px] left-0 w-full h-[1px] overflow-hidden pointer-events-none z-10'>
+                <div className='hidden lg:block absolute -bottom-[0.5px] left-0 w-full h-[1px] overflow-hidden pointer-events-none z-10'>
                   <div 
                     className={`${isMounted ? 'grid-beam-h-about beam-delay-badge' : 'opacity-0'} h-full w-[150px]`} 
                     style={beamHorizontalStyle}
@@ -133,9 +133,9 @@ export default function AboutSection ({ socialMedias }: AboutSectionProps) {
               </div>
             </div>
             <div className="flex items-center justify-center w-full border-t-1 border-oliveBlack/70 border-dashed lg:flex-row lg:border-0">
-              <div className="relative flex flex-col items-start justify-start gap-1 w-[90%] h-auto border-1 border-t-0 border-b-0 border-oliveBlack/70 border-dashed pt-2 pb-5 px-3 lg:w-full lg:h-[200px] lg:border-0 lg:border-b-1 lg:px-5">
+              <div className="relative flex flex-col items-start justify-start gap-1 w-[90%] h-auto border-1 border-t-0 border-b-0 border-oliveBlack/70 border-dashed pt-1 pb-5 px-3 lg:w-full lg:h-[200px] lg:border-0 lg:border-b-1 lg:px-5">
                 {/* Horizontal Running Grid Beam (Below Bio Line) */}
-                <div className='absolute -bottom-[0.5px] left-0 w-full h-[1px] overflow-hidden pointer-events-none z-10'>
+                <div className='hidden lg:block absolute -bottom-[0.5px] left-0 w-full h-[1px] overflow-hidden pointer-events-none z-10'>
                   <div 
                     className={`${isMounted ? 'grid-beam-h-about beam-delay-bio' : 'opacity-0'} h-full w-[150px]`} 
                     style={beamHorizontalStyle}
@@ -148,15 +148,15 @@ export default function AboutSection ({ socialMedias }: AboutSectionProps) {
                   </span>
                 </h1>
                 <p id='about-desc' className="text-seashell text-base leading-[24px]">
-                  I’m a detail-oriented Frontend Engineer focused on turning complex ideas into simple, intuitive web experiences.
-                  I care about clean code, thoughtful interfaces, and building scalable applications that are practical, reliable, and easy to use.
+                  I started out designing interfaces, then went deeper into building them — now I spend my days turning complex logistics workflows into interfaces that just make sense.
+                  Getting there means obsessing over the small stuff nobody notices until it&apos;s missing.
                 </p>
               </div>
             </div>
             <div className="flex items-center justify-center w-full border-t-1 border-oliveBlack/70 border-dashed lg:flex-row lg:border-0">
               <div className="relative flex flex-col items-start justify-start gap-8 w-[90%] h-[150px] border-1 border-t-0 border-b-0 border-oliveBlack/70 border-dashed pt-5 pb-5 px-3 lg:gap-[30px] lg:w-full lg:h-full lg:border-0 lg:border-b-1 lg:px-5">
                 {/* Horizontal Running Grid Beam (Below Buttons Line) */}
-                <div className='absolute -bottom-[0.5px] left-0 w-full h-[1px] overflow-hidden pointer-events-none z-10'>
+                <div className='hidden lg:block absolute -bottom-[0.5px] left-0 w-full h-[1px] overflow-hidden pointer-events-none z-10'>
                   <div 
                     className={`${isMounted ? 'grid-beam-h-about beam-delay-bottom-about' : 'opacity-0'} h-full w-[150px]`} 
                     style={beamHorizontalStyle}
@@ -226,14 +226,14 @@ export default function AboutSection ({ socialMedias }: AboutSectionProps) {
                 }}
               >
                 {/* Horizontal Running Grid Beam (Picture Top Line) */}
-                <div className='absolute -top-[0.5px] left-0 w-full h-[1px] overflow-hidden pointer-events-none z-10'>
+                <div className='hidden lg:block absolute -top-[0.5px] left-0 w-full h-[1px] overflow-hidden pointer-events-none z-10'>
                   <div 
                     className={`${isMounted ? 'grid-beam-h-photo beam-delay-top-photo' : 'opacity-0'} h-full w-[150px]`} 
                     style={beamHorizontalStyle}
                   />
                 </div>
                 {/* Horizontal Running Grid Beam (Picture Bottom Line) */}
-                <div className='absolute -bottom-[0.5px] left-0 w-full h-[1px] overflow-hidden pointer-events-none z-10'>
+                <div className='hidden lg:block absolute -bottom-[0.5px] left-0 w-full h-[1px] overflow-hidden pointer-events-none z-10'>
                   <div 
                     className={`${isMounted ? 'grid-beam-h-photo beam-delay-bottom-photo' : 'opacity-0'} h-full w-[150px]`} 
                     style={beamHorizontalStyle}
