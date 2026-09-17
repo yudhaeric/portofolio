@@ -1,9 +1,10 @@
-/* eslint-disable @next/next/no-img-element */
 'use client'
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import { useSectionStore } from '../../store/sectionStore';
+import logoImg from '@/public/images/inside-yudha-logo.png';
 
 const menuItems = [
   { name: "About", section: "about" },
@@ -156,12 +157,13 @@ const Header = () => {
           }}
           className="flex items-center cursor-pointer group select-none"
         >
-          <img 
-            src="/images/inside-yudha-logo.png" 
+          <Image 
+            src={logoImg} 
             alt="inside-yudha logo" 
+            priority
             className="h-5 sm:h-6 w-auto object-contain transition-transform duration-300 group-hover:scale-105" 
           />
-          <span className="font-medium text-sm lg:text-base text-white tracking-tight whitespace-nowrap">
+          <span className="font-semibold text-sm lg:text-base text-white tracking-tight whitespace-nowrap">
             inside-yudha
           </span>
         </Link>
