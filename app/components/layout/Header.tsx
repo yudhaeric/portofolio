@@ -4,7 +4,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import { useSectionStore } from '../../store/sectionStore';
-import logoImg from '@/public/images/inside-yudha-logo.png';
 
 const menuItems = [
   { name: "About", section: "about" },
@@ -158,8 +157,10 @@ const Header = () => {
           className="flex items-center cursor-pointer group select-none"
         >
           <Image 
-            src={logoImg} 
+            src="/images/inside-yudha-logo.png" 
             alt="inside-yudha logo" 
+            width={32}
+            height={24}
             priority
             className="h-5 sm:h-6 w-auto object-contain transition-transform duration-300 group-hover:scale-105" 
           />

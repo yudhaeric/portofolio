@@ -14,7 +14,7 @@ export default function Footer() {
   const setSectionRef = useSectionStore((state) => state.setSectionRef);
   const sectionRefs = useSectionStore((state) => state.sectionRefs);
 
-  useContactAnimation(contactRef);
+  useContactAnimation(contactRef, pathname);
 
   useEffect(() => {
     if (contactRef.current) {
