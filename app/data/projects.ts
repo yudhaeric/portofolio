@@ -37,7 +37,7 @@ export const projects: Project[] = [
     title: "Es Teh Poci",
     url: "https://estehpoci.id/",
     desc: "Interactive franchise and brand portal for Es Teh Poci. Features a dynamic partner registration flow ('Jadi Juragan') synced with the Google Sheets API for real-time lead capture, a custom personality quiz engine matching users to product flavors, and highly engaging scroll animations using GSAP.",
-    tech: "Laravel 12 · PHP 8.2 · Backpack CRUD · Tailwind CSS v4 · Vite 6 · GSAP · Google Sheets API · Swiper",
+    tech: "Laravel · PHP · Backpack CRUD · Tailwind CSS · Vite · GSAP · Google Sheets API · Swiper",
     category: "Brand",
     featured: false
   },
@@ -47,7 +47,7 @@ export const projects: Project[] = [
     title: "OBH Combi",
     url: "https://obhcombi.co.id/",
     desc: "Corporate website for OBH Combi featuring two distinct themes for adults and children with separate, tailored product catalogs. The children's theme includes interactive maze and puzzle games to engage users. Built responsive and SEO-optimized for fast, accessible browsing on all devices.",
-    tech: "NextJS 15 · jQuery · Redux · Tailwind CSS · Laravel",
+    tech: "NextJS · jQuery · Redux · Tailwind CSS · Laravel",
     category: "Brand",
     featured: false
   },
@@ -57,7 +57,7 @@ export const projects: Project[] = [
     title: "Combiphar",
     url: "https://www.combiphar.com/id",
     desc: "Corporate website for Combiphar showcasing a categorized product catalog with detailed product pages, CSR & news sections, career pages, and multilingual support. Built responsive and SEO-conscious for fast, accessible browsing on mobile and desktop.",
-    tech: "NextJS 14 · jQuery · Tailwind CSS · Laravel",
+    tech: "NextJS · jQuery · Tailwind CSS · Laravel",
     category: "Corporate",
     featured: false
   },
