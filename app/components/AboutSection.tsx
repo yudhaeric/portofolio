@@ -5,9 +5,10 @@ import { useSectionStore } from '../store/sectionStore';
 import { useAboutAnimation } from '../hooks/useAboutAnimation';
 import Button from './ui/Button';
 import { SocialMedia } from '../utils/types';
+import { socialMedias as defaultSocialMedias } from '../data/socialMedias';
 
 interface AboutSectionProps {
-  socialMedias: SocialMedia[];
+  socialMedias?: SocialMedia[];
 }
 
 const beamHorizontalStyle = {
@@ -20,7 +21,7 @@ const beamVerticalStyle = {
   filter: 'drop-shadow(0 0 3px rgba(229, 231, 235, 0.3))',
 };
 
-export default function AboutSection ({ socialMedias }: AboutSectionProps) {
+export default function AboutSection ({ socialMedias = defaultSocialMedias }: AboutSectionProps) {
   const [isMounted, setIsMounted] = useState(false);
   const aboutRef = useRef<HTMLElement | null>(null);
   const setSectionRef = useSectionStore((state) => state.setSectionRef);
