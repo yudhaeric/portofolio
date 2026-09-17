@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <main className="min-h-screen bg-[#131415]">
+    <main className="min-h-[calc(100vh-420px)] bg-[#131415]">
       <ProjectsCatalog projects={projects} />
     </main>
   );

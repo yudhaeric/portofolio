@@ -1,9 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Button from '@/app/components/ui/Button';
 import { Project } from '@/app/utils/types';
+import { useCatalogAnimation } from '@/app/hooks/useCatalogAnimation';
 
 interface ProjectsCatalogProps {
   projects: Project[];
@@ -11,6 +12,11 @@ interface ProjectsCatalogProps {
 
 export default function ProjectsCatalog({ projects }: ProjectsCatalogProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
+  const catalogRef = useRef<HTMLDivElement | null>(null);
+
+  useCatalogAnimation(catalogRef);
 
   const categories = useMemo(() => {
     const unique = new Set<string>();
@@ -25,49 +31,147 @@ export default function ProjectsCatalog({ projects }: ProjectsCatalogProps) {
     return projects.filter((p) => p.category === selectedCategory);
   }, [projects, selectedCategory]);
 
+  useEffect(() => {
+    import('gsap/ScrollTrigger').then(({ ScrollTrigger }) => {
+      ScrollTrigger.refresh();
+    });
+  }, [filteredProjects]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    if (isDropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('touchstart', handleClickOutside);
+      window.addEventListener('keydown', handleKeyDown);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isDropdownOpen]);
+
   return (
-    <div className="relative w-[90%] mx-auto pt-[110px] pb-[100px] lg:w-[1050px] lg:pt-[130px] lg:pb-[140px]">
+    <div ref={catalogRef} className="relative w-[90%] mx-auto pt-[90px] pb-[40px] lg:w-[1050px] lg:pt-[130px] lg:pb-[50px]">
       {/* Background Watermark */}
-      <div className="hidden absolute top-12 -left-5 pointer-events-none lg:block lg:-left-24 lg:top-8 select-none">
+      <div id="catalog-watermark" className="hidden absolute top-12 -left-5 pointer-events-none lg:block lg:-left-24 lg:top-8 select-none">
         <p className="font-medium text-[90px] text-transparent bg-gradient-to-b from-[#A1A1A4]/30 lg:from-[#A1A1A4]/10 to-raisinBlack/1 to-80% bg-clip-text tracking-[-3%] lg:text-[200px]">
           Projects
         </p>
       </div>
 
-      <div className="relative z-10 flex flex-col items-start justify-start gap-8 w-full">
+      <div className="relative z-10 flex flex-col items-start justify-start gap-2 lg:gap-6 w-full">
         {/* Back Link & Navigation */}
-        <Link
-          href="/"
-          className="inline-flex items-center gap-2 text-sm text-sonicSilver hover:text-seashell transition-colors duration-200 group"
-        >
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-1" 
-            fill="none" 
-            viewBox="0 0 24 24" 
-            stroke="currentColor" 
-            strokeWidth={2}
+        <div id="catalog-back">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 text-sm text-sonicSilver hover:text-seashell transition-colors duration-200 group"
           >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-          </svg>
-          <span>Back to Overview</span>
-        </Link>
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-1" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor" 
+              strokeWidth={2}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+            <span>Return to Overview</span>
+          </Link>
+        </div>
 
         {/* Header Title */}
         <div className="flex flex-col items-start justify-start gap-2">
-          <h1 className="font-semibold text-[38px] text-white lg:text-[46px] leading-tight">
-            All{' '}
+          <h1 id="catalog-title" className="font-semibold text-[38px] text-white lg:text-[46px] leading-tight">
+            Curated{' '}
             <span className="text-transparent bg-gradient-to-br from-[#5a5d63] from-[5%] via-crayolaGreen to-[#5a5d63] to-[95%] bg-clip-text">
               Projects
             </span>
           </h1>
-          <p className="font-medium text-sonicSilver text-sm lg:text-base max-w-[650px] leading-relaxed">
+          <p id="catalog-desc" className="font-medium text-sonicSilver text-sm lg:text-base max-w-[650px] leading-relaxed">
             A comprehensive showcase of web applications, enterprise systems, and interactive brand platforms I&apos;ve designed, built, and contributed to.
           </p>
         </div>
 
         {/* Category Filters */}
-        <div className="flex flex-wrap items-center gap-2 pt-2 pb-1">
+        <div id="catalog-filters" className="w-full">
+          {/* Category Filters: Mobile Dropdown (< sm) */}
+          <div className="relative w-full sm:hidden my-3" ref={dropdownRef}>
+          <button
+            type="button"
+            onClick={() => setIsDropdownOpen((prev) => !prev)}
+            aria-expanded={isDropdownOpen}
+            aria-label="Filter category"
+            className="flex items-center justify-between w-full px-3.5 py-2.5 rounded-[10px] bg-raisinBlack/80 border border-oliveBlack/80 text-xs font-medium text-seashell shadow-md cursor-pointer transition-all duration-200 hover:border-oliveBlack"
+          >
+            <div className="flex items-center gap-2">
+              <span className="text-sonicSilver text-[11px] uppercase tracking-wider mt-[1px]">Category:</span>
+              <span className="text-white font-medium">
+                {selectedCategory === 'All' ? 'All Projects' : selectedCategory}
+              </span>
+            </div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2}
+              stroke="currentColor"
+              className={`w-4 h-4 transition-transform duration-200 text-sonicSilver ${
+                isDropdownOpen ? 'rotate-180 text-crayolaGreen' : ''
+              }`}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+          </button>
+
+          {/* Mobile Dropdown Menu Card */}
+          {isDropdownOpen && (
+            <div 
+              className="absolute top-[calc(100%+6px)] left-0 right-0 w-full bg-[#131415] border border-oliveBlack/80 rounded-[10px] shadow-2xl p-1.5 z-50 flex flex-col gap-1 backdrop-blur-none"
+              role="menu"
+            >
+              {categories.map((cat) => {
+                const isActive = selectedCategory === cat;
+                return (
+                  <button
+                    key={cat}
+                    role="menuitem"
+                    onClick={() => {
+                      setSelectedCategory(cat);
+                      setIsDropdownOpen(false);
+                    }}
+                    className={`w-full text-left px-3.5 py-2.5 rounded-[6px] text-xs font-medium transition-colors duration-200 cursor-pointer flex items-center justify-between ${
+                      isActive
+                        ? 'bg-raisinBlack text-crayolaGreen font-semibold'
+                        : 'text-seashell/80 hover:text-white hover:bg-raisinBlack/60'
+                    }`}
+                  >
+                    <span>{cat === 'All' ? 'All Projects' : cat}</span>
+                    {isActive && (
+                      <span className="w-1.5 h-1.5 rounded-full bg-crayolaGreen" />
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+          )}
+        </div>
+
+        {/* Category Filters: Desktop & Tablet Pills (sm:) */}
+        <div className="hidden sm:flex flex-wrap items-center gap-2 pb-1">
           {categories.map((cat) => {
             const isActive = selectedCategory === cat;
             return (
@@ -85,17 +189,18 @@ export default function ProjectsCatalog({ projects }: ProjectsCatalogProps) {
             );
           })}
         </div>
+      </div>
 
-        {/* Project Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full mt-4">
-          {filteredProjects.map((project) => (
-            <div
-              key={project.id}
-              className="flex flex-col justify-between w-full bg-raisinBlack/40 border-1 border-oliveBlack/70 border-dashed rounded-[12px] p-5 transition-all duration-300 hover:border-oliveBlack hover:bg-raisinBlack/70 group"
-            >
+      {/* Project Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full">
+        {filteredProjects.map((project) => (
+          <div
+            key={project.id}
+            className="project-card flex flex-col justify-between w-full bg-raisinBlack/40 border-1 border-oliveBlack/70 border-dashed rounded-[12px] p-5 transition-all duration-300 hover:border-oliveBlack hover:bg-raisinBlack/70 group"
+          >
               <div>
                 {/* Image Container */}
-                <div className="flex items-center justify-center w-full bg-raisinBlack bg-line-shape bg-no-repeat bg-cover rounded-[8px] p-4 h-[210px] overflow-hidden">
+                <div className="flex items-center justify-center w-full bg-raisinBlack bg-line-shape bg-no-repeat bg-cover rounded-[8px] p-4 h-[250px] overflow-hidden">
                   <img
                     src={project.image}
                     alt={project.title}
@@ -106,7 +211,7 @@ export default function ProjectsCatalog({ projects }: ProjectsCatalogProps) {
                 {/* Content */}
                 <div className="flex flex-col items-start justify-start pt-5">
                   {project.category && (
-                    <span className="text-[11px] font-medium text-crayolaGreen bg-crayolaGreen/10 border border-crayolaGreen/20 px-2.5 py-0.5 rounded-full mb-3.5">
+                    <span className="text-xs font-medium text-crayolaGreen bg-crayolaGreen/10 border border-crayolaGreen/20 px-2.5 py-0.5 rounded-full mb-3.5">
                       {project.category}
                     </span>
                   )}
@@ -126,7 +231,7 @@ export default function ProjectsCatalog({ projects }: ProjectsCatalogProps) {
                   <span className="text-seashell/60 leading-5">{project.tech}</span>
                 </div>
                 <div className="flex items-center justify-end pt-2">
-                  <Button type="link" href={project.url} variant="basic" className="!w-[130px] !h-[38px]">
+                  <Button type="link" href={project.url} variant="basic">
                     Visit Website
                   </Button>
                 </div>
@@ -151,7 +256,7 @@ export default function ProjectsCatalog({ projects }: ProjectsCatalogProps) {
             >
               <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
             </svg>
-            <span>Return to Home</span>
+            <span>Return to Overview</span>
           </Link>
         </div>
       </div>
