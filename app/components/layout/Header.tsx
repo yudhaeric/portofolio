@@ -1,5 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 import { useSectionStore } from '../../store/sectionStore';
 
 const menuItems = [
@@ -9,12 +12,32 @@ const menuItems = [
 ];
 
 const Header = () => {
+  const pathname = usePathname();
+  const router = useRouter();
   const sectionRefs = useSectionStore((state) => state.sectionRefs);
-  const [activeSection, setActiveSection] = useState("about");
+  const [activeSection, setActiveSection] = useState(pathname === '/projects' ? "projects" : "about");
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
+  useEffect(() => {
+    if (pathname === '/projects') {
+      setActiveSection("projects");
+    }
+  }, [pathname]);
+
   const handleClickNavItem = (section: string) => {
+    if (pathname !== '/') {
+      if (section === 'projects') {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+      } else {
+        router.push(`/#${section}`);
+      }
+      return;
+    }
+
     const ref = sectionRefs[section];
     if (ref) {
       const offset = 120;
@@ -33,10 +56,12 @@ const Header = () => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      // 1. Bottom detection
-      const isAtBottom = window.innerHeight + currentScrollY >= document.documentElement.scrollHeight - 10;
-      if (isAtBottom) {
-        setActiveSection("contact");
+      // 1. Bottom detection (only on home page)
+      if (pathname === '/') {
+        const isAtBottom = window.innerHeight + currentScrollY >= document.documentElement.scrollHeight - 10;
+        if (isAtBottom) {
+          setActiveSection("contact");
+        }
       }
 
       // 2. Hide on scroll down, show on scroll up
@@ -53,7 +78,7 @@ const Header = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [lastScrollY]);
+  }, [lastScrollY, pathname]);
 
   // Hover detection at the top of the viewport
   useEffect(() => {
@@ -69,8 +94,10 @@ const Header = () => {
     };
   }, []);
 
-  // IntersectionObserver spy for center screen elements
+  // IntersectionObserver spy for center screen elements (only on home page)
   useEffect(() => {
+    if (pathname !== '/') return;
+
     const elements = Object.entries(sectionRefs);
     if (elements.length === 0) return;
 
@@ -108,35 +135,58 @@ const Header = () => {
     return () => {
       observer.disconnect();
     };
-  }, [sectionRefs]);
+  }, [sectionRefs, pathname]);
 
   return (
     <header 
-      className={`fixed top-5 left-0 right-0 mx-auto w-[300px] h-[55px] rounded-[10px] z-[99] lg:w-[320px] bg-gradient-to-r from-seashell/10 via-[#131415]/95 to-seashell/10 border border-oliveBlack/20 transition-all duration-500 ease-in-out ${
+      className={`fixed top-5 left-0 right-0 mx-auto w-max max-w-[92vw] h-[55px] px-4 lg:px-6 rounded-[10px] z-[99] bg-gradient-to-r from-seashell/10 via-[#131415]/95 to-seashell/10 border border-oliveBlack/20 transition-all duration-500 ease-in-out ${
         isHeaderVisible ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-10 pointer-events-none'
       }`}
       onMouseEnter={() => setIsHeaderVisible(true)}
     >
-      <nav className="relative w-full h-full">
-        <div className="relative h-full z-10">
-          <ul className="flex items-center justify-center gap-5 h-full px-5">
-            {menuItems.map((item) => {
-              const isActive = activeSection === item.section;
-              return (
-                <li key={item.name} className="flex-1 items-center justify-center">
-                  <button
-                    onClick={() => handleClickNavItem(item.section)}
-                    className={`w-full h-full font-medium text-sm text-center transition-colors duration-300 block cursor-pointer py-2 lg:text-base ${
-                      isActive ? 'text-crayolaGreen' : 'text-sonicSilver hover:text-seashell'
-                    }`}
-                  >
-                    {item.name}
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
+      <nav className="relative w-full h-full flex items-center justify-between gap-3 sm:gap-4 lg:gap-6">
+        {/* Left: Brand Logo & Name */}
+        <Link 
+          href="/" 
+          onClick={(e) => {
+            if (pathname === '/') {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+          }}
+          className="flex items-center cursor-pointer group select-none"
+        >
+          <img 
+            src="/images/inside-yudha-logo.png" 
+            alt="inside-yudha logo" 
+            className="h-5 sm:h-6 w-auto object-contain transition-transform duration-300 group-hover:scale-105" 
+          />
+          <span className="font-medium text-sm lg:text-base text-white tracking-tight whitespace-nowrap">
+            inside-yudha
+          </span>
+        </Link>
+
+        {/* Divider */}
+        <span className="text-oliveBlack/80 font-light text-sm select-none">|</span>
+
+        {/* Right: Nav Menu */}
+        <ul className="flex items-center gap-3 sm:gap-4 lg:gap-7">
+          {menuItems.map((item) => {
+            const isActive = activeSection === item.section;
+            return (
+              <li key={item.name} className="items-center justify-center">
+                <button
+                  onClick={() => handleClickNavItem(item.section)}
+                  className={`font-medium text-xs sm:text-sm lg:text-base text-center transition-colors duration-300 block cursor-pointer py-1 ${
+                    isActive ? 'text-crayolaGreen' : 'text-sonicSilver hover:text-seashell'
+                  }`}
+                >
+                  {item.name}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
       </nav>
     </header>
   );
