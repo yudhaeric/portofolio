@@ -66,6 +66,11 @@ export const metadata: Metadata = {
     description: "Building thoughtful and scalable web experiences with clean code, scalability, and attention to detail.",
     images: ["/images/pictures.png"],
   },
+  icons: {
+    icon: "/favicon.ico?v=2",
+    shortcut: "/favicon.ico?v=2",
+    apple: "/favicon.ico?v=2",
+  },
 };
 
 export default function RootLayout({
