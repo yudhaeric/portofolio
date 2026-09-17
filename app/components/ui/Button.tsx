@@ -47,7 +47,7 @@ export default function Button({
   }, [setSectionRef]);
   
   // styles
-  const baseWrapper = "flex items-center justify-center w-[140px] h-[48px] text-seashell text-sm rounded-[5px] transition-all duration-300 cursor-pointer p-[1px] lg:w-[121px] lg:h-[40px]";
+  const baseWrapper = "flex items-center justify-center w-[140px] h-[40px] text-seashell text-sm rounded-[5px] transition-all duration-300 cursor-pointer p-[1px] lg:w-[121px] lg:h-[40px]";
   const baseButton = "relative z-10 flex items-center justify-center w-full h-full rounded-[5px]";
   const borderGradient = "bg-gradient-to-br from-charlestonGreen via-platinum/40 via-[22%] to-charlestonGreen";
 
@@ -57,7 +57,7 @@ export default function Button({
   };
 
   const commonClassNames = `${baseWrapper} ${borderGradient} running-light-border ${className}`;
-  const innerClassNames = `${baseButton} ${variants[variant]} ${className}`;
+  const innerClassNames = `${baseButton} ${variants[variant]}`;
 
   if (type === 'link' && href) {
     const isInternal = href.startsWith('/');
