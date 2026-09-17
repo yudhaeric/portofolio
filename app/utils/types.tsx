@@ -12,4 +12,6 @@ export interface Project {
   url: string;
   desc: string;
   tech: string;
+  category?: string;
+  featured?: boolean;
 }

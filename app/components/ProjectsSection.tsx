@@ -1,11 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 'use client'
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { useSectionStore } from '../store/sectionStore';
 import { useProjectsAnimation } from '../hooks/useProjectsAnimation';
 import Button from './ui/Button';
 import { Project } from '../utils/types';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 interface ProjectsSectionProps {
   projects: Project[];
@@ -14,7 +13,6 @@ interface ProjectsSectionProps {
 export default function ProjectsSection ({ projects }: ProjectsSectionProps) {
   const projectsRef = useRef<HTMLElement | null>(null);
   const setSectionRef = useSectionStore((state) => state.setSectionRef);
-  const [isExpanded, setIsExpanded] = useState(false);
 
   useProjectsAnimation(projectsRef);
   
@@ -23,10 +21,6 @@ export default function ProjectsSection ({ projects }: ProjectsSectionProps) {
       setSectionRef("projects", projectsRef.current);
     }
   }, [setSectionRef]);
-
-  useEffect(() => {
-    ScrollTrigger.refresh();
-  }, [isExpanded]);
 
   return (
     <section ref={projectsRef} id="featured-projects">
@@ -49,9 +43,9 @@ export default function ProjectsSection ({ projects }: ProjectsSectionProps) {
             </p>
           </div>
           <div className='flex flex-col items-center justify-center gap-[30px] w-full'>
-            {(isExpanded ? projects : projects.slice(0, 3)).map((project, index) => {
+            {projects.slice(0, 3).map((project) => {
               return ( 
-                <div key={project.id} className={`flex flex-col items-center justify-center gap-5 w-full lg:flex-row ${index >= 3 ? 'animate-fade-in-up' : ''}`}>
+                <div key={project.id} className="flex flex-col items-center justify-center gap-5 w-full lg:flex-row">
                   <div className={`${project.id % 2 === 0 ? 'order-1 lg:order-2' : 'order-2 lg:order-1'} flex items-center justify-center w-full bg-raisinBlack bg-line-shape bg-no-repeat bg-cover rounded-[10px] p-4 lg:w-[305px] lg:h-[340px] lg:p-0`}>
                     <img src={project.image} alt={project.title} className='w-full lg:w-[285px] lg:h-[210px]' />
                   </div>
@@ -70,17 +64,16 @@ export default function ProjectsSection ({ projects }: ProjectsSectionProps) {
               )
             })}
             
-            {projects.length > 3 && (
-              <div className='flex justify-center w-full mt-4 lg:mt-6'>
-                <Button 
-                  onClick={() => setIsExpanded(!isExpanded)} 
-                  variant='highlight'
-                  className='!w-[180px] lg:!w-[160px]'
-                >
-                  {isExpanded ? 'Show Less' : 'Explore Projects'}
-                </Button>
-              </div>
-            )}
+            <div className='flex justify-center w-full mt-4 lg:mt-6'>
+              <Button 
+                type='link'
+                href='/projects' 
+                variant='highlight'
+                className='!w-[180px] lg:!w-[160px]'
+              >
+                Explore Projects
+              </Button>
+            </div>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 // app/components/ui/Button.tsx
 'use client';
 import { useRef, useEffect } from 'react';
+import Link from 'next/link';
 import { useSectionStore } from '../../store/sectionStore';
 
 type ButtonAsButton = {
@@ -10,6 +11,7 @@ type ButtonAsButton = {
   onClick?: () => void;
   className?: string;
   href?: never;
+  target?: never;
 };
 
 type ButtonAsLink = {
@@ -17,6 +19,7 @@ type ButtonAsLink = {
   type: 'link';
   variant?: 'highlight' | 'basic';
   href: string;
+  target?: string;
   onClick?: never;
   className?: string;
 };
@@ -30,6 +33,7 @@ export default function Button({
   variant = 'basic',
   onClick,
   href,
+  target,
   className = '',
 }: ButtonProps) {
 
@@ -55,11 +59,25 @@ export default function Button({
   const commonClassNames = `${baseWrapper} ${borderGradient} running-light-border ${className}`;
   const innerClassNames = `${baseButton} ${variants[variant]} ${className}`;
 
-  if (type === 'link') {
+  if (type === 'link' && href) {
+    const isInternal = href.startsWith('/');
+    if (isInternal) {
+      return (
+        <Link
+          href={href}
+          className={commonClassNames}
+        >
+          <span className={innerClassNames}>
+            {children}
+          </span>
+        </Link>
+      );
+    }
+
     return (
       <a
         href={href}
-        target="_blank"
+        target={target || "_blank"}
         rel="noopener noreferrer"
         className={commonClassNames}
       >
