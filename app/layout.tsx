@@ -53,10 +53,10 @@ export const metadata: Metadata = {
     siteName: "Inside Yudha",
     images: [
       {
-        url: "/images/pictures.png",
+        url: "/images/inside-yudha-logo.png",
         width: 800,
         height: 600,
-        alt: "Yudha Eric Pamungkas - Frontend Engineer",
+        alt: "Inside Yudha Logo",
       },
     ],
   },
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Yudha Eric Pamungkas — Frontend Engineer",
     description: "Building thoughtful and scalable web experiences with clean code, scalability, and attention to detail.",
-    images: ["/images/pictures.png"],
+    images: ["/images/inside-yudha-logo.png"],
   },
   icons: {
     icon: "/favicon.ico?v=2",
