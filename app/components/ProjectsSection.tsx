@@ -24,7 +24,7 @@ export default function ProjectsSection ({ projects }: ProjectsSectionProps) {
 
   return (
     <section ref={projectsRef} id="featured-projects">
-      <div className="relative w-[90%] mx-auto mt-[70px] lg:w-[1050px] lg:mt-[100px]">
+      <div className="relative w-[90%] mx-auto mt-[50px] lg:w-[1050px] lg:mt-[100px]">
         <div id='projects-gradient' className='hidden absolute -top-14 -left-5 lg:block lg:-left-32 lg:-top-32'>
           <p className="font-medium text-[90px] mobile-md:text-[100px] text-transparent bg-gradient-to-b from-[#A1A1A4]/50 lg:from-[#A1A1A4]/10 to-raisinBlack/1 to-80% bg-clip-text tracking-[-3%] lg:text-[200px]">
             Projects
@@ -32,7 +32,7 @@ export default function ProjectsSection ({ projects }: ProjectsSectionProps) {
         </div>
         <div className='relative flex flex-col items-start justify-start gap-10 w-full mx-auto z-10 lg:gap-[43px] lg:w-[90%]'>
           <div className='flex flex-col items-start justify-start'>
-            <h1 className="font-semibold text-[40px] text-white lg:text-[42px]">
+            <h1 className="font-semibold mobile-sm:text-[36px] text-white lg:text-[42px]">
               Featured {' '}
               <span className="text-transparent bg-gradient-to-br from-[#5a5d63] from-[5%] via-crayolaGreen to-[#5a5d63] to-[95%] bg-clip-text">
                 Projects

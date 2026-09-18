@@ -8,38 +8,51 @@ export const useContactAnimation = (elementRef: RefObject<HTMLElement | null>, d
 
     if (!elementRef.current) return;
 
-    // On non-home pages (e.g. /projects), the footer is a standard page footer.
-    // Ensure it remains permanently visible, avoiding issues when filtered content is short.
     const isHomePage = typeof dependency === 'string' ? dependency === '/' : true;
 
-    if (!isHomePage) {
-      gsap.set(elementRef.current, {
-        y: 0,
-        opacity: 1,
-        clearProps: "all",
-      });
-      return;
-    }
-
     const ctx = gsap.context(() => {
-      gsap.fromTo(
-        elementRef.current,
-        {
-          y: 50,
-          opacity: 0,
-        },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.7,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: elementRef.current,
-            start: "top 88%",
-            toggleActions: "play reverse play reverse",
+      if (isHomePage) {
+        // Home page has bidirectional scroll animation
+        gsap.fromTo(
+          elementRef.current,
+          {
+            y: 50,
+            opacity: 0,
           },
-        }
-      );
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.7,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: elementRef.current,
+              start: "top 88%",
+              toggleActions: "play reverse play reverse",
+            },
+          }
+        );
+      } else {
+        // Non-home pages (e.g. /projects): entrance animation that stays visible
+        gsap.fromTo(
+          elementRef.current,
+          {
+            y: 40,
+            opacity: 0,
+          },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.6,
+            ease: "power2.out",
+            clearProps: "transform,opacity",
+            scrollTrigger: {
+              trigger: elementRef.current,
+              start: "top 98%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      }
     }, elementRef);
 
     // Ensure ScrollTrigger measures accurate document height after render

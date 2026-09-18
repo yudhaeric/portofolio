@@ -225,9 +225,9 @@ const Header = () => {
             width={26}
             height={22}
             priority
-            className="h-5 sm:h-[18px] lg:h-[18px] w-auto object-contain transition-transform duration-300 group-hover:scale-105" 
+            className="h-6 sm:h-[18px] lg:h-[18px] w-auto object-contain transition-transform duration-300 group-hover:scale-105" 
           />
-          <span className="font-medium text-xs sm:text-sm lg:text-base text-white tracking-tight whitespace-nowrap">
+          <span className="font-medium text-sm lg:text-base text-white tracking-tight whitespace-nowrap">
             inside-yudha
           </span>
         </Link>
@@ -261,7 +261,7 @@ const Header = () => {
             onClick={() => setIsMobileMenuOpen((prev) => !prev)}
             aria-label="Toggle Navigation Menu"
             aria-expanded={isMobileMenuOpen}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-[8px] bg-raisinBlack border border-oliveBlack/70 text-seashell hover:text-white hover:border-oliveBlack transition-all duration-200 cursor-pointer text-xs font-medium tracking-wide shadow-md backdrop-blur-none select-none"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-[8px] bg-raisinBlack border border-oliveBlack/70 text-seashell hover:text-white hover:border-oliveBlack transition-all duration-200 cursor-pointer text-sm font-medium tracking-wide shadow-md backdrop-blur-none select-none"
           >
             <span>Menu</span>
             <svg 
@@ -292,7 +292,7 @@ const Header = () => {
                     key={item.name}
                     role="menuitem"
                     onClick={() => handleClickNavItem(item.section)}
-                    className={`w-full text-left px-3 py-2 rounded-[6px] text-xs font-medium transition-colors duration-200 cursor-pointer flex items-center justify-between ${
+                    className={`w-full text-left px-3 py-2 rounded-[6px] text-sm font-medium transition-colors duration-200 cursor-pointer flex items-center justify-between ${
                       isActive
                         ? 'bg-raisinBlack text-crayolaGreen font-semibold'
                         : 'text-seashell/80 hover:text-white hover:bg-raisinBlack/60'

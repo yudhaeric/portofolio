@@ -207,7 +207,7 @@ export default function AboutSection ({ socialMedias = defaultSocialMedias }: Ab
           </div>
           
           {/* Picture */}
-          <div className='w-full h-[370px] flex flex-col items-center justify-center border-b-1 border-t-1 border-oliveBlack/70 lg:border-oliveBlack/40 border-dashed lg:flex-row lg:w-[41%] lg:h-[420px] lg:border-0 dmd:h-[550px] pr-1'>
+          <div className='w-full h-[370px] flex flex-col items-center justify-center border-b-1 border-t-1 border-oliveBlack/70 lg:border-oliveBlack/40 border-dashed lg:flex-row lg:w-[41%] lg:h-[500px] lg:border-0 dmd:h-[517px] 2xl:h-[550px] lg:pr-1'>
             <div className="relative flex flex-col items-center justify-center w-[90%] h-[370px] lg:w-full lg:h-full">
               {/* Vertical Running Grid Beam (Rightmost Line) */}
               <div className='hidden lg:block absolute top-0 -right-[0.5px] w-[1px] h-full overflow-hidden pointer-events-none z-10'>
@@ -220,7 +220,7 @@ export default function AboutSection ({ socialMedias = defaultSocialMedias }: Ab
                 <div className='w-full border-r-1 border-oliveBlack/70 lg:border-oliveBlack/40 border-dashed lg:w-full h-full'></div>
               </div>
               
-              <div className="relative flex flex-col items-center justify-center gap-1 w-full h-[370px] border-l-1 border-r-1 border-oliveBlack/70 border-dashed lg:gap-0 lg:w-full lg:h-[420px] lg:border-t-1 lg:border-l-0 lg:border-b-1 dmd:h-[422px]"
+              <div className="relative flex flex-col items-center justify-center gap-1 w-full h-[370px] border-l-1 border-r-1 border-oliveBlack/70 border-dashed lg:gap-0 lg:w-full lg:h-[420px] lg:border-t-1 lg:border-l-0 lg:border-b-1 dmd:h-[517px] 2xl:h-[422px]"
                 style={{
                   backgroundImage: 'radial-gradient(circle, #3A3B3C 1px, transparent 1px)',
                   backgroundSize: '10px 10px',
