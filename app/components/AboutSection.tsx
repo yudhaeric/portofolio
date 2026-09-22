@@ -35,21 +35,7 @@ export default function AboutSection ({ socialMedias = defaultSocialMedias }: Ab
     }
   }, [setSectionRef]);
 
-  const sectionRefs = useSectionStore((state) => state.sectionRefs);
 
-  const handleClickProjectsSection = (section: string) => {
-    const ref = sectionRefs[section];
-    if (ref) {
-      const offset = 120;
-      const elementPosition = ref.getBoundingClientRect().top + window.scrollY;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-    }
-  };
 
   return (
     <section ref={aboutRef} id="about" className="lg:min-h-screen lg:flex lg:items-center lg:justify-center w-full">
@@ -166,7 +152,8 @@ export default function AboutSection ({ socialMedias = defaultSocialMedias }: Ab
                 <div className='about-link flex items-center justify-start gap-4 w-full lg:w-auto lg:gap-3 lg:justify-center mobile-md:gap-2'>
                   <Button type='link' href='mailto:yudhaericpamungkas@gmail.com' variant='highlight'>Get in Touch</Button>
                   <Button
-                    onClick={() => handleClickProjectsSection('projects')} 
+                    type='link'
+                    href='/projects'
                     variant='basic'
                   >
                     View Projects

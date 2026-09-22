@@ -6,6 +6,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useSectionStore } from '../../store/sectionStore';
 
 const menuItems = [
+  { name: "Home", section: "home" },
   { name: "About", section: "about" },
   { name: "Projects", section: "projects" },
   { name: "Contact", section: "contact" },
@@ -15,7 +16,9 @@ const Header = () => {
   const pathname = usePathname();
   const router = useRouter();
   const sectionRefs = useSectionStore((state) => state.sectionRefs);
-  const [activeSection, setActiveSection] = useState(pathname === '/projects' ? "projects" : "about");
+  const [activeSection, setActiveSection] = useState(
+    pathname === '/projects' ? "projects" : pathname === '/about' ? "about" : "home"
+  );
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -24,10 +27,12 @@ const Header = () => {
   useEffect(() => {
     if (pathname === '/projects') {
       setActiveSection("projects");
+    } else if (pathname === '/about') {
+      setActiveSection("about");
     } else if (pathname === '/') {
       if (typeof window !== 'undefined' && !window.location.hash) {
         window.scrollTo({ top: 0, behavior: "smooth" });
-        setActiveSection("about");
+        setActiveSection("home");
       }
     }
     setIsMobileMenuOpen(false);
@@ -41,7 +46,7 @@ const Header = () => {
         top: 0,
         behavior: "smooth",
       });
-      setActiveSection("about");
+      setActiveSection("home");
     } else {
       e.preventDefault();
       router.push('/');
@@ -49,7 +54,7 @@ const Header = () => {
         top: 0,
         behavior: "smooth",
       });
-      setActiveSection("about");
+      setActiveSection("home");
     }
   };
 
@@ -83,6 +88,30 @@ const Header = () => {
   const handleClickNavItem = (section: string) => {
     setIsMobileMenuOpen(false);
 
+    if (section === 'home') {
+      if (pathname === '/') {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+      } else {
+        router.push('/');
+      }
+      return;
+    }
+
+    if (section === 'about') {
+      if (pathname === '/about') {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+      } else {
+        router.push('/about');
+      }
+      return;
+    }
+
     if (section === 'projects') {
       if (pathname === '/projects') {
         window.scrollTo({
@@ -91,6 +120,24 @@ const Header = () => {
         });
       } else {
         router.push('/projects');
+      }
+      return;
+    }
+
+    if (section === 'contact') {
+      if (pathname !== '/') {
+        router.push('/#contact');
+      } else {
+        const ref = sectionRefs['contact'];
+        if (ref) {
+          const offset = 120;
+          const elementPosition = ref.getBoundingClientRect().top + window.scrollY;
+          const offsetPosition = elementPosition - offset;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+          });
+        }
       }
       return;
     }
@@ -123,11 +170,13 @@ const Header = () => {
         setIsMobileMenuOpen(false);
       }
 
-      // 1. Bottom detection (only on home page)
+      // 1. Bottom detection and top detection (only on home page)
       if (pathname === '/') {
         const isAtBottom = window.innerHeight + currentScrollY >= document.documentElement.scrollHeight - 10;
         if (isAtBottom) {
           setActiveSection("contact");
+        } else if (currentScrollY < 150) {
+          setActiveSection("home");
         }
       }
 
@@ -182,7 +231,7 @@ const Header = () => {
             (key) => sectionRefs[key] === entry.target
           );
           if (sectionKey) {
-            setActiveSection(sectionKey);
+            setActiveSection(sectionKey === 'about' ? 'home' : sectionKey);
           }
         }
       });

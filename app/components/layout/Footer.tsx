@@ -23,17 +23,40 @@ export default function Footer() {
   }, [setSectionRef]);
 
   const handleScrollToSection = (section: string) => {
-    if (pathname !== '/') {
-      if (section === 'contact') {
-        contactRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (section === 'home') {
+      if (pathname === '/') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
-        router.push(`/#${section}`);
+        router.push('/');
+      }
+      return;
+    }
+
+    if (section === 'about') {
+      if (pathname === '/about') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        router.push('/about');
+      }
+      return;
+    }
+
+    if (section === 'projects') {
+      if (pathname === '/projects') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        router.push('/projects');
       }
       return;
     }
 
     if (section === 'contact') {
       contactRef.current?.scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
+
+    if (pathname !== '/') {
+      router.push(`/#${section}`);
       return;
     }
 
@@ -82,7 +105,7 @@ export default function Footer() {
                       target="_blank" 
                       rel="noopener noreferrer" 
                       key={social.id} 
-                      className={`${social.name === "whatsapp" ? "w-28 h-28" : ""} relative group scale-icon w-[20px] h-[20px] lg:w-[20px] lg:h-[20px]`}
+                      className={`${social.name === "whatsapp" ? "w-28 h-28 " : ""}relative group scale-icon w-[20px] h-[20px] lg:w-[20px] lg:h-[20px]`}
                     >
                       <img src={social.icon} alt="" className="w-full h-full brightness-0 invert opacity-60 hover:opacity-100 transition-opacity duration-300"/>
                       {socialName && (
@@ -103,6 +126,14 @@ export default function Footer() {
                 General
               </h2>
               <ul className="flex flex-col gap-3 text-sm">
+                <li>
+                  <button 
+                    onClick={() => handleScrollToSection('home')}
+                    className="text-sonicSilver hover:text-crayolaGreen transition-colors duration-300 text-left cursor-pointer font-regular"
+                  >
+                    Home
+                  </button>
+                </li>
                 <li>
                   <button 
                     onClick={() => handleScrollToSection('about')}
