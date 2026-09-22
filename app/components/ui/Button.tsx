@@ -1,8 +1,6 @@
 // app/components/ui/Button.tsx
 'use client';
-import { useRef, useEffect } from 'react';
 import Link from 'next/link';
-import { useSectionStore } from '../../store/sectionStore';
 
 type ButtonAsButton = {
   children: React.ReactNode;
@@ -36,18 +34,8 @@ export default function Button({
   target,
   className = '',
 }: ButtonProps) {
-
-  const projectsRef = useRef<HTMLElement | null>(null);
-  const setSectionRef = useSectionStore((state) => state.setSectionRef);
-  
-  useEffect(() => {
-    if (projectsRef.current) {
-      setSectionRef("projects", projectsRef.current);
-    }
-  }, [setSectionRef]);
-  
   // styles
-  const baseWrapper = "flex items-center justify-center w-[140px] h-[40px] text-seashell text-sm rounded-[5px] transition-all duration-300 cursor-pointer p-[1px] lg:w-[121px] lg:h-[40px]";
+  const baseWrapper = "flex items-center justify-center w-[140px] h-[40px] text-seashell text-sm rounded-[5px] transition-all duration-300 cursor-pointer p-[1px] lg:w-[135px] lg:h-[40px]";
   const baseButton = "relative z-10 flex items-center justify-center w-full h-full rounded-[5px]";
   const borderGradient = "bg-gradient-to-br from-charlestonGreen via-platinum/40 via-[22%] to-charlestonGreen";
 
@@ -56,8 +44,17 @@ export default function Button({
     basic: "bg-raisinBlack"
   };
 
-  const commonClassNames = `${baseWrapper} ${borderGradient} running-light-border ${className}`;
-  const innerClassNames = `${baseButton} ${variants[variant]}`;
+  const commonClassNames = [
+    baseWrapper,
+    borderGradient,
+    "running-light-border",
+    className
+  ].filter(Boolean).join(" ").trim();
+
+  const innerClassNames = [
+    baseButton,
+    variants[variant]
+  ].filter(Boolean).join(" ").trim();
 
   if (type === 'link' && href) {
     const isInternal = href.startsWith('/');
