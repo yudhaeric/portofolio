@@ -50,11 +50,6 @@ export default function Footer() {
       return;
     }
 
-    if (section === 'contact') {
-      contactRef.current?.scrollIntoView({ behavior: 'smooth' });
-      return;
-    }
-
     if (pathname !== '/') {
       router.push(`/#${section}`);
       return;
@@ -150,14 +145,7 @@ export default function Footer() {
                     Projects
                   </button>
                 </li>
-                <li>
-                  <button 
-                    onClick={() => handleScrollToSection('contact')}
-                    className="text-sonicSilver hover:text-crayolaGreen transition-colors duration-300 text-left cursor-pointer font-regular"
-                  >
-                    Contact
-                  </button>
-                </li>
+
               </ul>
             </div>
 

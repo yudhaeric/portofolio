@@ -9,7 +9,6 @@ const menuItems = [
   { name: "Home", section: "home" },
   { name: "About", section: "about" },
   { name: "Projects", section: "projects" },
-  { name: "Contact", section: "contact" },
 ];
 
 const Header = () => {
@@ -124,24 +123,6 @@ const Header = () => {
       return;
     }
 
-    if (section === 'contact') {
-      if (pathname !== '/') {
-        router.push('/#contact');
-      } else {
-        const ref = sectionRefs['contact'];
-        if (ref) {
-          const offset = 120;
-          const elementPosition = ref.getBoundingClientRect().top + window.scrollY;
-          const offsetPosition = elementPosition - offset;
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: "smooth"
-          });
-        }
-      }
-      return;
-    }
-
     if (pathname !== '/') {
       router.push(`/#${section}`);
       return;
@@ -174,7 +155,7 @@ const Header = () => {
       if (pathname === '/') {
         const isAtBottom = window.innerHeight + currentScrollY >= document.documentElement.scrollHeight - 10;
         if (isAtBottom) {
-          setActiveSection("contact");
+          setActiveSection("");
         } else if (currentScrollY < 150) {
           setActiveSection("home");
         }
@@ -221,7 +202,7 @@ const Header = () => {
       // Avoid overriding if we're at the absolute bottom
       const isAtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 10;
       if (isAtBottom) {
-        setActiveSection("contact");
+        setActiveSection("");
         return;
       }
 
