@@ -107,7 +107,7 @@ export default function ProjectsCatalog({ projects }: ProjectsCatalogProps) {
         </div>
 
         {/* Category Filters */}
-        <div id="catalog-filters" className="w-full">
+        <div id="catalog-filters" className="w-full mt-5 lg:mt-0">
           {/* Category Filters: Mobile Dropdown (< sm) */}
           <div className="relative w-full sm:hidden my-3" ref={dropdownRef}>
           <button
@@ -117,9 +117,9 @@ export default function ProjectsCatalog({ projects }: ProjectsCatalogProps) {
             aria-label="Filter category"
             className="flex items-center justify-between w-full px-3.5 py-2.5 rounded-[10px] bg-raisinBlack/80 border border-oliveBlack/80 text-xs font-medium text-seashell shadow-md cursor-pointer transition-all duration-200 hover:border-oliveBlack"
           >
-            <div className="flex items-center gap-2">
-              <span className="text-sonicSilver text-[11px] uppercase tracking-wider mt-[1px]">Category:</span>
-              <span className="text-white font-medium">
+            <div className="flex justify-center items-center gap-2">
+              <span className="text-sonicSilver text-xs uppercase tracking-wider mt-[2px] lg:mt-[1px]">Category:</span>
+              <span className="text-white font-medium text-sm">
                 {selectedCategory === 'All' ? 'All Projects' : selectedCategory}
               </span>
             </div>
@@ -153,7 +153,7 @@ export default function ProjectsCatalog({ projects }: ProjectsCatalogProps) {
                       setSelectedCategory(cat);
                       setIsDropdownOpen(false);
                     }}
-                    className={`w-full text-left px-3.5 py-2.5 rounded-[6px] text-xs font-medium transition-colors duration-200 cursor-pointer flex items-center justify-between ${
+                    className={`w-full text-left px-3.5 py-2.5 rounded-[6px] text-sm font-medium transition-colors duration-200 cursor-pointer flex items-center justify-between ${
                       isActive
                         ? 'bg-raisinBlack text-crayolaGreen font-semibold'
                         : 'text-seashell/80 hover:text-white hover:bg-raisinBlack/60'
@@ -193,11 +193,16 @@ export default function ProjectsCatalog({ projects }: ProjectsCatalogProps) {
 
       {/* Project Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full">
-        {filteredProjects.map((project) => (
-          <div
-            key={project.id}
-            className="project-card flex flex-col justify-between w-full bg-raisinBlack/40 border-1 border-oliveBlack/70 border-dashed rounded-[12px] p-5 transition-all duration-300 hover:border-oliveBlack hover:bg-raisinBlack/70 group"
-          >
+        {filteredProjects.map((project) => {
+          const techList = Array.isArray(project.tech)
+            ? project.tech
+            : project.tech.split('·').map((t) => t.trim());
+
+          return (
+            <div
+              key={project.id}
+              className="project-card flex flex-col justify-between w-full bg-raisinBlack/40 border-1 border-oliveBlack/70 border-dashed rounded-[12px] p-5 transition-all duration-300 hover:border-oliveBlack hover:bg-raisinBlack/70 group"
+            >
               <div>
                 {/* Image Container */}
                 <div className="flex items-center justify-center w-full bg-raisinBlack bg-line-shape bg-no-repeat bg-cover rounded-[8px] p-4 h-[250px] overflow-hidden">
@@ -211,11 +216,11 @@ export default function ProjectsCatalog({ projects }: ProjectsCatalogProps) {
                 {/* Content */}
                 <div className="flex flex-col items-start justify-start pt-5">
                   {project.category && (
-                    <span className="text-xs font-medium text-crayolaGreen bg-crayolaGreen/10 border border-crayolaGreen/20 px-2.5 py-0.5 rounded-full mb-3.5">
+                    <span className="text-sm font-medium text-crayolaGreen bg-crayolaGreen/10 border border-crayolaGreen/20 px-2.5 py-0.5 rounded-full mb-3.5">
                       {project.category}
                     </span>
                   )}
-                  <h2 className="text-transparent font-bold text-2xl bg-gradient-to-b from-white to-[#999999] bg-clip-text mb-2">
+                  <h2 className="text-transparent font-bold text-3xl lg:text-2xl bg-gradient-to-b from-white to-[#999999] bg-clip-text mb-2">
                     {project.title}
                   </h2>
                   <p className="text-seashell/80 text-sm leading-6 mb-4">
@@ -226,18 +231,57 @@ export default function ProjectsCatalog({ projects }: ProjectsCatalogProps) {
 
               {/* Footer info & Button */}
               <div className="flex flex-col gap-4 pt-4 border-t border-oliveBlack/40 border-dashed mt-auto">
-                <div className="flex flex-col gap-1 text-xs">
-                  <span className="font-semibold text-seashell/90">Tech Stack</span>
-                  <span className="text-seashell/60 leading-5">{project.tech}</span>
+                <div className="flex flex-col gap-2.5">
+                  <div className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-crayolaGreen/70"></span>
+                    <span className="font-semibold text-xs uppercase tracking-wider text-seashell">
+                      Tech Stack
+                    </span>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {techList.map((item) => (
+                      <span
+                        key={item}
+                        className="px-3 py-1 rounded-full text-xs font-medium bg-raisinBlack border border-oliveBlack/80 text-seashell/80 hover:text-white hover:border-crayolaGreen/40 transition-colors duration-200"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                <div className="flex items-center justify-end pt-2">
-                  <Button type="link" href={project.url} variant="basic">
-                    Visit Website
-                  </Button>
+                <div className="flex items-center justify-start lg:justify-end pt-2 mt-3 lg:mt-0">
+                  {/* Mobile: Minimalist text link with arrow */}
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex lg:hidden items-center gap-1.5 text-sm font-medium text-seashell hover:text-crayolaGreen transition-colors duration-200 group py-1"
+                  >
+                    <span className="underline underline-offset-4 decoration-crayolaGreen/60 group-hover:decoration-crayolaGreen">Visit Website</span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-crayolaGreen"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M5.22 14.78a.75.75 0 0 0 1.06 0l7.22-7.22v5.69a.75.75 0 0 0 1.5 0v-7.5a.75.75 0 0 0-.75-.75h-7.5a.75.75 0 0 0 0 1.5h5.69l-7.22 7.22a.75.75 0 0 0 0 1.06Z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </a>
+                  {/* Desktop: Standard Button */}
+                  <div className="hidden lg:block">
+                    <Button type="link" href={project.url} variant="basic" className="!h-[44px]">
+                      Visit Website
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>
-          ))}
+          );
+        })}
         </div>
 
         {/* Bottom Back Button */}

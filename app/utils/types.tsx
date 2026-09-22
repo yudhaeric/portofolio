@@ -11,7 +11,7 @@ export interface Project {
   title: string;
   url: string;
   desc: string;
-  tech: string;
+  tech: string | string[];
   category?: string;
   featured?: boolean;
 }

@@ -95,19 +95,19 @@ export default function AboutView() {
 
           {/* Title and Intro */}
           <div id="about-header" className="flex flex-col items-start justify-start gap-2 max-w-[850px]">
-            <h1 className="font-semibold text-[40px] text-white lg:text-[48px] leading-tight">
+            <h1 className="font-semibold text-[38px] text-white lg:text-[48px] leading-tight">
               About{' '}
               <span className="text-transparent bg-gradient-to-br from-[#5a5d63] from-[5%] via-crayolaGreen to-[#5a5d63] to-[95%] bg-clip-text">
                 Me
               </span>
             </h1>
-            <p className="text-base font-medium text-sonicSilver leading-relaxed">
+            <p className="text-sm lg:text-base font-medium text-sonicSilver leading-relaxed">
               {bioData.headline}
             </p>
           </div>
         </div>
 
-        {/* SECTION 1: Tentang Ku / Narrative Bio */}
+        {/* SECTION 1: Narrative Bio */}
         <section id="about-section-bio" className="about-section w-full flex flex-col gap-6">
           <div className="about-section-header flex items-center gap-3">
             <span className="w-2 h-2 rounded-full bg-crayolaGreen"></span>
