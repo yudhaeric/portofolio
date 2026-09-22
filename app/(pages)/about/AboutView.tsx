@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
 import Button from '@/app/components/ui/Button';
 import { useAboutPageAnimation } from '@/app/hooks/useAboutPageAnimation';
@@ -15,12 +15,50 @@ import {
 export default function AboutView() {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
+  // Mobile progressive disclosure & loading states for Education & Courses
+  const [visibleEdu, setVisibleEdu] = useState(1);
+  const [isLoadingEdu, setIsLoadingEdu] = useState(false);
+  const eduTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const [visibleCourses, setVisibleCourses] = useState(3);
+  const [isLoadingCourses, setIsLoadingCourses] = useState(false);
+  const coursesTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (eduTimerRef.current) clearTimeout(eduTimerRef.current);
+      if (coursesTimerRef.current) clearTimeout(coursesTimerRef.current);
+    };
+  }, []);
+
+  const handleLoadMoreEdu = () => {
+    setIsLoadingEdu(true);
+    eduTimerRef.current = setTimeout(() => {
+      setVisibleEdu((prev) => Math.min(prev + 1, educationList.length));
+      setIsLoadingEdu(false);
+      import('gsap/ScrollTrigger').then(({ ScrollTrigger }) => {
+        ScrollTrigger.refresh();
+      });
+    }, 450);
+  };
+
+  const handleLoadMoreCourses = () => {
+    setIsLoadingCourses(true);
+    coursesTimerRef.current = setTimeout(() => {
+      setVisibleCourses((prev) => Math.min(prev + 3, courseList.length));
+      setIsLoadingCourses(false);
+      import('gsap/ScrollTrigger').then(({ ScrollTrigger }) => {
+        ScrollTrigger.refresh();
+      });
+    }, 450);
+  };
+
   useAboutPageAnimation(containerRef);
 
   return (
     <div
       ref={containerRef}
-      className="relative w-[90%] mx-auto pt-[90px] pb-[60px] lg:w-[1050px] lg:pt-[130px] lg:pb-[90px]"
+      className="relative w-[90%] mx-auto pt-[90px] pb-[40px] lg:w-[1050px] lg:pt-[130px] lg:pb-[90px]"
     >
       {/* Background Watermark */}
       <div
@@ -57,13 +95,13 @@ export default function AboutView() {
 
           {/* Title and Intro */}
           <div id="about-header" className="flex flex-col items-start justify-start gap-2 max-w-[850px]">
-            <h1 className="font-semibold text-[38px] text-white lg:text-[48px] leading-tight">
+            <h1 className="font-semibold text-[40px] text-white lg:text-[48px] leading-tight">
               About{' '}
               <span className="text-transparent bg-gradient-to-br from-[#5a5d63] from-[5%] via-crayolaGreen to-[#5a5d63] to-[95%] bg-clip-text">
                 Me
               </span>
             </h1>
-            <p className="font-medium text-sonicSilver text-sm lg:text-base leading-relaxed">
+            <p className="text-base font-medium text-sonicSilver leading-relaxed">
               {bioData.headline}
             </p>
           </div>
@@ -73,7 +111,7 @@ export default function AboutView() {
         <section id="about-section-bio" className="about-section w-full flex flex-col gap-6">
           <div className="about-section-header flex items-center gap-3">
             <span className="w-2 h-2 rounded-full bg-crayolaGreen"></span>
-            <h2 className="text-xs uppercase tracking-widest text-crayolaGreen font-semibold">
+            <h2 className="text-xs uppercase tracking-widest text-crayolaGreen font-semibold lg:text-xs">
               Background & Story
             </h2>
           </div>
@@ -86,11 +124,11 @@ export default function AboutView() {
                   <img
                     src="/images/pictures.png"
                     alt="Yudha Eric Pamungkas"
-                    className="w-full h-full object-cover rounded-full"
+                    className="w-full h-full object-cover object-[0%_20%] rounded-full"
                   />
                 </div>
-                <h3 className="font-semibold text-lg text-white">Yudha Eric Pamungkas</h3>
-                <p className="text-xs text-crayolaGreen font-medium mt-0.5">Frontend Engineer</p>
+                <h3 className="font-semibold text-xl text-white lg:text-lg">Yudha Eric Pamungkas</h3>
+                <p className="text-base text-crayolaGreen font-medium mt-1 lg:mt-0.5 lg:text-sm">Frontend Engineer</p>
 
                 <div className="w-full h-[1px] bg-oliveBlack/60 border-dashed my-4"></div>
 
@@ -99,7 +137,7 @@ export default function AboutView() {
                     type="link"
                     href="mailto:yudhaericpamungkas@gmail.com"
                     variant="basic"
-                    className="!w-full !h-[36px] text-xs"
+                    className="!w-full !h-[48px] text-sm lg:!h-[42px]"
                   >
                     Reach Me
                   </Button>
@@ -107,7 +145,7 @@ export default function AboutView() {
                     type="link"
                     href="https://drive.google.com/file/d/1-Jiw5CyA9SzDEL2IWx3qQz-rW9eQOwZ1/view?usp=sharing"
                     variant="basic"
-                    className="!w-full !h-[36px] text-xs"
+                    className="!w-full !h-[48px] text-sm lg:!h-[42px]"
                   >
                     Resume
                   </Button>
@@ -122,14 +160,14 @@ export default function AboutView() {
                     className="bg-raisinBlack/30 border border-oliveBlack/60 rounded-[10px] p-3.5 flex flex-col gap-1"
                   >
                     <span className="text-[11px] text-sonicSilver uppercase tracking-wider">{stat.label}</span>
-                    <span className="text-xs lg:text-sm font-semibold text-seashell">{stat.value}</span>
+                    <span className="text-sm font-semibold text-seashell/80">{stat.value}</span>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Right Column: Bio Narrative Paragraphs */}
-            <div className="about-bio-text lg:col-span-8 flex flex-col gap-4 text-seashell/80 text-sm lg:text-base leading-relaxed bg-raisinBlack/20 border border-oliveBlack/50 rounded-[12px] p-6 lg:p-8">
+            <div className="about-bio-text lg:col-span-8 flex flex-col gap-4 text-seashell/90 text-sm lg:text-base leading-relaxed bg-raisinBlack/20 border border-oliveBlack/50 rounded-[12px] p-6 lg:p-8">
               {bioData.paragraphs.map((p, idx) => (
                 <p key={idx}>{p}</p>
               ))}
@@ -177,7 +215,7 @@ export default function AboutView() {
                 {/* Bullet Points */}
                 <ul className="flex flex-col gap-2 mt-2">
                   {exp.description.map((bullet, bIdx) => (
-                    <li key={bIdx} className="flex items-start gap-2.5 text-xs lg:text-sm text-seashell/75 leading-relaxed">
+                    <li key={bIdx} className="flex items-start gap-2.5 text-sm lg:text-sm text-seashell/75 leading-relaxed">
                       <span className="text-crayolaGreen mt-1 text-base leading-none">›</span>
                       <span>{bullet}</span>
                     </li>
@@ -189,7 +227,7 @@ export default function AboutView() {
                   {exp.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className="text-[11px] px-2.5 py-0.5 rounded-md bg-raisinBlack/80 border border-oliveBlack/60 text-seashell/70"
+                      className="text-xs px-2.5 py-0.5 rounded-md bg-raisinBlack/80 border border-oliveBlack/60 text-seashell/70"
                     >
                       {tech}
                     </span>
@@ -210,35 +248,69 @@ export default function AboutView() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 w-full">
-            {educationList.map((edu) => (
-              <div
-                key={edu.id}
-                className="about-education-item flex flex-col justify-between bg-raisinBlack/40 border border-oliveBlack/70 border-dashed rounded-[12px] p-6 hover:border-oliveBlack hover:bg-raisinBlack/60 transition-all duration-300"
-              >
-                <div>
-                  <div className="flex items-start justify-between gap-2 mb-2">
-                    <h3 className="font-bold text-base lg:text-lg text-white">
-                      {edu.institution}
-                    </h3>
-                    {edu.gpa && (
-                      <span className="text-[11px] font-semibold text-crayolaGreen bg-crayolaGreen/10 border border-crayolaGreen/30 px-2 py-0.5 rounded-full whitespace-nowrap">
-                        GPA {edu.gpa}
-                      </span>
-                    )}
+            {educationList.map((edu, index) => {
+              const isHiddenOnMobile = index >= visibleEdu;
+              return (
+                <div
+                  key={edu.id}
+                  className={`about-education-item flex flex-col justify-between bg-raisinBlack/40 border border-oliveBlack/70 border-dashed rounded-[12px] p-6 hover:border-oliveBlack hover:bg-raisinBlack/60 transition-all duration-300 ${
+                    isHiddenOnMobile ? 'hidden sm:flex' : 'flex'
+                  } ${index >= 1 && !isHiddenOnMobile ? 'animate-fade-in-up' : ''}`}
+                >
+                  <div>
+                    <div className="flex items-center justify-between gap-2 mb-2">
+                      <h3 className="font-bold text-base lg:text-lg text-white">
+                        {edu.institution}
+                      </h3>
+                      {edu.gpa && (
+                        <span className="text-xs font-semibold text-crayolaGreen bg-crayolaGreen/10 border border-crayolaGreen/30 px-2 py-0.5 rounded-full whitespace-nowrap">
+                          GPA {edu.gpa}
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-sm lg:text-sm text-seashell/90 font-medium mb-1">
+                      {edu.degree}
+                    </p>
+                    <p className="text-sm text-sonicSilver mb-3">
+                      {edu.period}
+                    </p>
+                    <p className="text-sm lg:text-sm text-seashell/70 leading-relaxed">
+                      {edu.description}
+                    </p>
                   </div>
-                  <p className="text-xs lg:text-sm text-seashell/90 font-medium mb-1">
-                    {edu.degree}
-                  </p>
-                  <p className="text-xs text-sonicSilver mb-3">
-                    {edu.period}
-                  </p>
-                  <p className="text-xs lg:text-sm text-seashell/70 leading-relaxed">
-                    {edu.description}
-                  </p>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
+
+          {/* Mobile Load More Button for Education */}
+          {visibleEdu < educationList.length && (
+            <div className="flex sm:hidden justify-center w-full">
+              <button
+                type="button"
+                onClick={handleLoadMoreEdu}
+                disabled={isLoadingEdu}
+                className="w-full py-2.5 px-4 rounded-[8px] bg-raisinBlack/60 border border-oliveBlack/70 hover:border-crayolaGreen/50 text-seashell hover:text-white text-xs font-medium tracking-wide transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed active:scale-[0.99]"
+              >
+                {isLoadingEdu ? (
+                  <>
+                    <svg className="animate-spin h-3.5 w-3.5 text-crayolaGreen" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                    </svg>
+                    <span className="text-crayolaGreen font-medium">Loading Education...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Load More Education ({educationList.length - visibleEdu})</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5 text-crayolaGreen" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </>
+                )}
+              </button>
+            </div>
+          )}
         </section>
 
         {/* SECTION 4: Courses & Certifications */}
@@ -251,27 +323,61 @@ export default function AboutView() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 w-full">
-            {courseList.map((course) => (
-              <div
-                key={course.id}
-                className="about-course-item bg-raisinBlack/30 border border-oliveBlack/60 rounded-[10px] p-4 flex flex-col justify-between gap-3 hover:border-crayolaGreen/40 hover:bg-raisinBlack/50 transition-all duration-200 group"
-              >
-                <div>
-                  <span className="text-[10px] font-semibold tracking-wider uppercase text-crayolaGreen/90">
-                    {course.provider}
-                  </span>
-                  <h4 className="font-semibold text-xs lg:text-sm text-white group-hover:text-seashell mt-1 leading-snug">
-                    {course.title}
-                  </h4>
+            {courseList.map((course, index) => {
+              const isHiddenOnMobile = index >= visibleCourses;
+              return (
+                <div
+                  key={course.id}
+                  className={`about-course-item bg-raisinBlack/30 border border-oliveBlack/60 rounded-[10px] p-4 flex flex-col justify-between gap-3 hover:border-crayolaGreen/40 hover:bg-raisinBlack/50 transition-all duration-200 group ${
+                    isHiddenOnMobile ? 'hidden sm:flex' : 'flex'
+                  } ${index >= 3 && !isHiddenOnMobile ? 'animate-fade-in-up' : ''}`}
+                >
+                  <div>
+                    <span className="text-xs lg:text-[10px] font-semibold tracking-wider uppercase text-crayolaGreen/90">
+                      {course.provider}
+                    </span>
+                    <h4 className="font-semibold text-sm text-white group-hover:text-seashell mt-1 leading-snug">
+                      {course.title}
+                    </h4>
+                  </div>
+                  <div className="flex items-center justify-end">
+                    <span className="text-xs text-sonicSilver font-medium">
+                      {course.year}
+                    </span>
+                  </div>
                 </div>
-                <div className="flex items-center justify-end">
-                  <span className="text-[11px] text-sonicSilver font-medium">
-                    {course.year}
-                  </span>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
+
+          {/* Mobile Load More Button for Courses */}
+          {visibleCourses < courseList.length && (
+            <div className="flex sm:hidden justify-center w-full">
+              <button
+                type="button"
+                onClick={handleLoadMoreCourses}
+                disabled={isLoadingCourses}
+                className="w-full py-2.5 px-4 rounded-[8px] bg-raisinBlack/60 border border-oliveBlack/70 hover:border-crayolaGreen/50 text-seashell hover:text-white text-xs font-medium tracking-wide transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed active:scale-[0.99]"
+              >
+                {isLoadingCourses ? (
+                  <>
+                    <svg className="animate-spin h-3.5 w-3.5 text-crayolaGreen" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                    </svg>
+                    <span className="text-crayolaGreen font-medium">Loading Courses...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Load More Courses ({courseList.length - visibleCourses} remaining)</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5 text-crayolaGreen" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </>
+                )}
+              </button>
+            </div>
+          )}
         </section>
 
         {/* SECTION 5: Skills & Tech Stack */}
@@ -291,7 +397,7 @@ export default function AboutView() {
               >
                 <div className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-crayolaGreen/70"></span>
-                  <h3 className="text-xs font-semibold uppercase tracking-wider text-seashell">
+                  <h3 className="text-sm font-semibold uppercase tracking-wider text-seashell">
                     {group.category}
                   </h3>
                 </div>
@@ -311,7 +417,7 @@ export default function AboutView() {
         </section>
 
         {/* Bottom CTA / Navigation */}
-        <div id="about-section-cta" className="about-section w-full flex flex-col sm:flex-row items-center justify-between gap-6 pt-6 border-t border-oliveBlack/60 border-dashed mt-4">
+        <div id="about-section-cta" className="about-section w-full flex flex-row items-center justify-between gap-6 pt-6 border-t border-oliveBlack/60 border-dashed lg:mt-4">
           <Link
             href="/"
             className="inline-flex items-center gap-2 text-sm text-sonicSilver hover:text-crayolaGreen transition-colors duration-200"
@@ -326,10 +432,10 @@ export default function AboutView() {
             >
               <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
             </svg>
-            <span>Return to Overview</span>
+            <span>Return</span>
           </Link>
 
-          <Button type="link" href="/projects" variant="basic">
+          <Button type="link" href="/projects" variant="basic" className='!h-[44px]'>
             Explore Projects
           </Button>
         </div>
